@@ -16,8 +16,6 @@ sh downloads/gen/download.sh
 # run unzip shell script
 sh downloads/gen/unzip.sh
 
-
-
 # --
 
 # example zip file
@@ -25,9 +23,13 @@ sh downloads/gen/unzip.sh
 downloads/zips/3.5 circleX a_len ui slider checkbox select copy.zip
 
 cd p5projects
-rm -r "3.5 circleX a_len ui slider checkbox select copy"
-mkdir "3.5 circleX a_len ui slider checkbox select copy"
-cd "3.5 circleX a_len ui slider checkbox select copy"
-unzip "../../downloads/zips/3.5 circleX a_len ui slider checkbox select copy.zip"
+rm -r "some sketch"
+mkdir "some sketch"
+cd "some sketch"
+unzip "../../downloads/zips/some sketch.zip"
 cd ..
+
+# --
+
+27 sketches  
 
