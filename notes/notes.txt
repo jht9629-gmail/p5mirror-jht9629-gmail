@@ -3,9 +3,8 @@ notes.txt
 # -- 
 
 # add to .gitignore
-
-p5mirror
 .DS_Store
+downloads/zips
 
 # p5mirror is located in outter directory
 
