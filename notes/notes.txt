@@ -1,0 +1,34 @@
+notes.txt
+
+# -- 
+
+# add to .gitignore
+
+p5mirror
+.DS_Store
+
+# p5mirror is located in outter directory
+
+../p5mirror/bin/build.sh --user jht9629-gmail --downloads ../p5mirror-jht9629-gmail/downloads
+
+# run downloads shell script
+sh downloads/gen/download.sh
+
+# run unzip shell script
+sh downloads/gen/unzip.sh
+
+
+
+# --
+
+# example zip file
+
+downloads/zips/3.5 circleX a_len ui slider checkbox select copy.zip
+
+cd p5projects
+rm -r "3.5 circleX a_len ui slider checkbox select copy"
+mkdir "3.5 circleX a_len ui slider checkbox select copy"
+cd "3.5 circleX a_len ui slider checkbox select copy"
+unzip "../../downloads/zips/3.5 circleX a_len ui slider checkbox select copy.zip"
+cd ..
+

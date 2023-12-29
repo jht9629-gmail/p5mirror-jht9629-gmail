@@ -1,0 +1,61 @@
+// https://editor.p5js.org/jht9629-gmail/sketches/mxUEvOhbk
+// truchet tiles rotate
+
+let a_len = 40;
+let a_angle = 0;
+
+function setup() {
+  createCanvas(400, 400);
+  angleMode(DEGREES);
+  // noLoop();
+  noFill();
+  strokeWeight(4)
+}
+
+function draw() {
+  background(220);
+  let half = a_len/2
+  let odd = false
+  for (let x = 0; x < width; x += a_len) {
+    for (let y = 0; y < height; y += a_len) {
+      // if (random() > 0.5) {
+      if (odd) {
+        drawLeft(x,y,half)
+      }
+      else {
+        drawRight(x,y,half)
+      }
+      // odd = ! odd;
+    }
+    // odd = ! odd;
+  }
+  a_angle += 1;
+}
+
+function drawLeft(x, y, half) {
+  push();
+  translate(x+half, y+half);
+  rotate(a_angle)
+  arc(-half+0, -half+0, a_len, a_len, 0, 90);
+  arc(-half+a_len, -half+a_len, a_len, a_len, 180, 270);
+  pop();
+}
+
+function drawRight(x, y, half) {
+  push();
+  noFill();
+  translate(x+half, y+half);
+  rotate(a_angle)
+  arc(-half+a_len, -half+0, a_len, a_len, 90, 180);
+  arc(-half+0, -half+a_len, a_len, a_len, 270, 360);
+  pop();
+}
+
+// https://editor.p5js.org/jht9629-nyu/sketches/1CpIVSqp_d
+// truchet tiles re-factored
+
+// https://editor.p5js.org/jht9629-nyu/sketches/lBrb1cBQ7
+// truchet tiles copy
+
+// https://editor.p5js.org/ambikajo/sketches/cKu3Gn0Po
+// truchet tiles by ambikajo
