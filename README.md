@@ -1,4 +1,4 @@
-# p5mirror-jht9629-gmail
+# [p5mirror-jht9629-gmail](https://github.com/jht9629-gmail/p5mirror-jht9629-gmail)
 
 mirror of my jht9629-gmail p5js sketches
 
@@ -21,3 +21,7 @@ mirror of my jht9629-gmail p5js sketches
 
 - [downloads/json/collections.json](./downloads/json/collections.json)
 - [downloads/json/sketches.json](./downloads/json/sketches.json)
+
+# github pages
+
+[hthttps://jht9629-gmail.github.io/p5mirror-jht9629-gmail/](https://jht9629-gmail.github.io/p5mirror-jht9629-gmail/)
