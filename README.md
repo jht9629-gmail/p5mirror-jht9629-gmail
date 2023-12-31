@@ -1,6 +1,6 @@
 # [p5mirror-jht9629-gmail](https://github.com/jht9629-gmail/p5mirror-jht9629-gmail)
 
-mirror of my jht9629-gmail p5js sketches
+mirror of jht9629-gmail p5js sketches
 
 ## Generated files
 
