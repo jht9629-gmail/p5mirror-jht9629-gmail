@@ -1,0 +1,1824 @@
+[
+  {
+    "name": "3.5 circleX a_len ui slider checkbox select copy",
+    "_id": "OCFOju6nO",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "6536a46c4ea9ee1465d587cc",
+          "6536a46c4ea9ee1465d587cd",
+          "6536a46c4ea9ee1465d587ce"
+        ],
+        "fileType": "folder",
+        "_id": "6536a46c4ea9ee1465d587cb",
+        "createdAt": "2023-10-23T18:01:56.326Z",
+        "updatedAt": "2023-10-23T18:01:56.326Z",
+        "isSelectedFile": false,
+        "id": "6536a46c4ea9ee1465d587cb"
+      },
+      {
+        "name": "sketch.js",
+        "content": "// https://editor.p5js.org/jht9629-gmail/sketches/OCFOju6nO\n// 3.5 circleX a_len ui slider checkbox select copy\n\n// TRY: add report of aY\n// TRY: add moveY checkBox\n// TRY: modify move to follow mouse\n// TRY: update to use classes for many circle objects\n\n// Example of using DOM functions for\n// - Button\n// - Slider\n// - Checkbox\n// - Selection list\n\n// Global variables given distinctive prefix\n// to avoid conflict with hugh p5js name space\n// also help do quick rename by command-D\nlet aX = 0;\nlet aY = 100;\nlet aDeltaX = 2;\nlet aStepX = 20;\nlet aStepY = 5;\nlet aLen = 64;\nlet aMoveX = 1;\nlet aMoveY = 0;\nlet aFollowX = 0;\nlet aFollowY = 0;\nlet aColor = \"red\";\n\nfunction setup() {\n  createCanvas(400, 200).mousePressed(function () {\n    aX = mouseX;\n    aY = mouseY;\n  });\n  create_ui();\n}\n\nfunction draw() {\n  background(0);\n  noStroke();\n  fill(aColor);\n  circle(aX, aY, aLen);\n  if (aMoveX) {\n    aX = (aX + aDeltaX) % width;\n  }\n  if (aMoveY) {\n    aY = (aY + 1) % height;\n  }\n  if (aFollowX) {\n    let dx = (mouseX - aX) / aStepX;\n    aX += dx;\n  }\n  if (aFollowY) {\n    let dy = (mouseY - aY) / aStepY;\n    aY += dy;\n    if (aY < 0) aY = 0;\n    if (aY > height) aY = height;\n  }\n  update_ui();\n}\n\nfunction create_ui() {\n  createSpan(\"click on canvas to move the circle\");\n  createElement(\"br\");\n\n  // Buttons to change a variable\n  createButton(\"aLen 50\").mousePressed(function () {\n    aLen = 50;\n  });\n  createButton(\"aLen 100\").mousePressed(function () {\n    aLen = 100;\n  });\n\n  // createSlider(min, max, [value], [step])\n  createSlider(0, 300, aLen).input(function () {\n    aLen = this.value();\n  });\n\n  // Span used to report the value of a variable\n  createSpan().id(\"idLen\");\n  createElement(\"br\");\n\n  createButton(\"aDeltaX 2\").mousePressed(function () {\n    aDeltaX = 2;\n  });\n  createButton(\"aDeltaX 10\").mousePressed(function () {\n    aDeltaX = 10;\n  });\n\n  // id's are used to identify DOM element\n  createSpan().id(\"idX\");\n  createSpan().id(\"idY\");\n  createElement(\"br\");\n\n  // createCheckbox([label], [value])\n  createCheckbox(\"MoveX\", aMoveX).changed(function () {\n    aMoveX = this.checked();\n    aFollowX = !aMoveX;\n  });\n  createCheckbox(\"MoveY\", aMoveY).changed(function () {\n    aMoveY = this.checked();\n    aFollowY = !aMoveY;\n  });\n\n  // https://p5js.org/reference/#/p5/createSelect\n  let sel = createSelect();\n  sel.option(\"red\");\n  sel.option(\"green\");\n  sel.option(\"gold\");\n  sel.changed(function () {\n    aColor = this.value();\n  });\n}\n\nfunction update_ui() {\n  // select with # is find a DOC element by id\n  select(\"#idLen\").html(\"[aLen=\" + aLen + \"] \");\n  select(\"#idX\").html(\"[aX=\" + int(aX) + \"] \");\n  select(\"#idY\").html(\"[aY=\" + int(aY) + \"] \");\n}\n\n// https://editor.p5js.org/jht9629-nyu/sketches/UYiQ_IKf2\n// 3.5 circleX a_len ui slider checkbox select\n\n// https://editor.p5js.org/jht1493/sketches/qBt6Ty_7b\n// 3.5 circleX aLen ui\n\n// https://editor.p5js.org/jht1493/sketches/qBt6Ty_7b\n// 3.5 circleX a_len ui\n\n// https://editor.p5js.org/jht1493/sketches/UhNMB6GQO\n// 2.2.3 circleX % width ui\n\n// https://editor.p5js.org/jht1493/sketches/CwYDz_4N2\n// 2.2.2 variable circleX % width\n\n// https://editor.p5js.org/jht1493/sketches/v9zsQFPqN\n// 2.2 variable circleX\n\n// https://thecodingtrain.com/tracks/code-programming-with-p5-js/code/2-variables/2-define-variables\n\n// Make Your Own (Make Your Own Variable)\n// Code! Programming with p5.js\n// The Coding Train / Daniel Shiffman\n// https://thecodingtrain.com/beginners/p5js/2.2-make-your-own.html\n// https://youtu.be/dRhXIIFp-ys\n\n// Make Your Own Variable: https://editor.p5js.org/codingtrain/sketches/xPXNdPy17\n// Growing Circle Exercise: https://editor.p5js.org/codingtrain/sketches/ehbMJ-otC\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "6536a46c4ea9ee1465d587cd",
+        "isSelectedFile": true,
+        "createdAt": "2023-10-23T18:01:56.326Z",
+        "updatedAt": "2023-10-23T18:01:56.326Z",
+        "id": "6536a46c4ea9ee1465d587cd"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.js\"></script>\n<!--     <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/addons/p5.sound.min.js\"></script> -->\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n    <meta charset=\"utf-8\" />\n\n  </head>\n  <body>\n    <main>\n    </main>\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "6536a46c4ea9ee1465d587cc",
+        "createdAt": "2023-10-23T18:01:56.326Z",
+        "updatedAt": "2023-10-23T18:01:56.326Z",
+        "isSelectedFile": false,
+        "id": "6536a46c4ea9ee1465d587cc"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "6536a46c4ea9ee1465d587ce",
+        "createdAt": "2023-10-23T18:01:56.326Z",
+        "updatedAt": "2023-10-23T18:01:56.326Z",
+        "isSelectedFile": false,
+        "id": "6536a46c4ea9ee1465d587ce"
+      }
+    ],
+    "createdAt": "2023-10-23T16:50:52.400Z",
+    "updatedAt": "2023-10-23T18:01:56.326Z",
+    "id": "OCFOju6nO"
+  },
+  {
+    "name": "IMS - Truchet Vamoss copy",
+    "_id": "wDfyiYikE",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "6417b47f9af54767d78a1ab4",
+          "6417b47f9af54767d78a1ab5",
+          "6417b47f9af54767d78a1ab6"
+        ],
+        "fileType": "folder",
+        "_id": "6417b47f9af54767d78a1ab3",
+        "createdAt": "2023-03-17T16:03:15.471Z",
+        "updatedAt": "2023-03-17T16:03:15.471Z",
+        "id": "6417b47f9af54767d78a1ab3"
+      },
+      {
+        "name": "sketch.js",
+        "content": "// https://editor.p5js.org/jht1493/sketches/TtXLXAiJv\n// IMS - Truchet Vamoss\n// https://openprocessing.org/sketch/1354815\n// Truchet in p5js by Vamoss\n\nvar aleatorios = [];\nvar tamanhoDoGrid = 21;\n\nfunction setup() {\n  createCanvas(400, 400);\n  noStroke();\n\n  for (var x = 0; x < width; x += tamanhoDoGrid) {\n    for (var y = 0; y < height; y += tamanhoDoGrid) {\n      aleatorios.push(floor(random(2)));\n    }\n  }\n}\n\nfunction draw() {\n  background(100);\n\n  var transparenciaRegular = map(mouseX, 0, width, 255, 0);\n  var transparenciaAleatoria = map(mouseY, 0, height, 255, 0);\n\n  var indice = 0;\n  for (var x = 0; x < width; x += tamanhoDoGrid) {\n    for (var y = 0; y < height; y += tamanhoDoGrid) {\n      if (aleatorios[indice] == 0) fill(255, transparenciaAleatoria);\n      else fill(0, transparenciaAleatoria);\n      rect(x, y, tamanhoDoGrid, tamanhoDoGrid);\n      indice++;\n    }\n  }\n\n  for (var x = 0; x <= width; x += tamanhoDoGrid) {\n    for (var y = 0; y <= height; y += tamanhoDoGrid) {\n      if ((x + y) % 2 == 0) fill(255, transparenciaRegular);\n      else fill(0, transparenciaRegular);\n      circle(x, y, tamanhoDoGrid);\n    }\n  }\n}\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "6417b47f9af54767d78a1ab5",
+        "isSelectedFile": true,
+        "createdAt": "2023-03-17T16:03:15.471Z",
+        "updatedAt": "2023-03-17T16:03:15.471Z",
+        "id": "6417b47f9af54767d78a1ab5"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/addons/p5.sound.min.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n    <meta charset=\"utf-8\" />\n\n  </head>\n  <body>\n    <main>\n    </main>\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "6417b47f9af54767d78a1ab4",
+        "createdAt": "2023-03-17T16:03:15.471Z",
+        "updatedAt": "2023-03-17T16:03:15.471Z",
+        "id": "6417b47f9af54767d78a1ab4"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "6417b47f9af54767d78a1ab6",
+        "createdAt": "2023-03-17T16:03:15.471Z",
+        "updatedAt": "2023-03-17T16:03:15.471Z",
+        "id": "6417b47f9af54767d78a1ab6"
+      }
+    ],
+    "createdAt": "2023-03-20T01:18:57.007Z",
+    "updatedAt": "2023-03-20T01:18:57.007Z",
+    "id": "wDfyiYikE"
+  },
+  {
+    "name": "maze tiles bits",
+    "_id": "IagYeywkY",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "64337dd160badc0373ad6ba3",
+          "64337dd160badc0373ad6ba4",
+          "64337dd160badc0373ad6ba5"
+        ],
+        "fileType": "folder",
+        "_id": "64337dd160badc0373ad6ba2",
+        "createdAt": "2023-04-10T09:44:11.271Z",
+        "updatedAt": "2023-04-10T09:44:11.271Z",
+        "isSelectedFile": false,
+        "id": "64337dd160badc0373ad6ba2"
+      },
+      {
+        "name": "sketch.js",
+        "content": "// https://editor.p5js.org/jht9629-gmail/sketches/IagYeywkY\n// maze tiles bits\n\nlet len = 40;\nlet a_angle = 0;\nlet a_now = [];\nlet a_next = [];\n// {count: seconds,...}\n// let a_pause_dict = { 0: 2.0, 90: 2.0, 180: 2.0, 270: 2.0  };\n// let a_angle_max = 360;\nlet a_pause_dict = { 0: 2.0, 90: 2.0 };\nlet a_angle_max = 180;\nlet a_pause_start = -1;\nlet a_pause_lapse;\nlet a_strokeWeight = 8;\nlet a_fill_pending = 0;\nlet a_incr = 0;\n\nfunction setup() {\n  createCanvas(400, 400);\n  angleMode(DEGREES);\n  noFill();\n  strokeWeight(a_strokeWeight);\n  fill_now_zero();\n  fill_next_random();\n}\n\nfunction fill_now_zero() {\n  a_now = [];\n  // Fill array a_arr with random true/false values\n  let index = 0;\n  for (let y = 0; y < height; y += len) {\n    for (let x = 0; x < width; x += len) {\n      a_now.push(0);\n      index++;\n    }\n  }\n}\n\nfunction fill_next_incr() {\n  a_next = [];\n  for (let index = 0; index < a_now.length; index++) {\n    a_next[index] = a_now[index]\n  }\n  for (let index = 0; index < a_now.length; index++) {\n    let bit = a_now[index] + 1;\n    if (bit == 1) {\n      a_next[index] = 1;\n      break;\n    }\n    a_next[index] = 0;\n  }\n}\n\nfunction fill_now_next() {\n  for (let index = 0; index < a_now.length; index++) {\n    a_now[index] = a_next[index]\n  }\n}\n\nfunction fill_next_random() {\n  a_next = [];\n  // Fill array a_arr with random true/false values\n  let index = 0;\n  for (let y = 0; y < height; y += len) {\n    for (let x = 0; x < width; x += len) {\n      let bit = random([0, 1]);\n      a_next.push(bit);\n      index++;\n    }\n  }\n}\n\nfunction draw() {\n  let half = len / 2;\n  background(220);\n  let index = 0;\n  for (let y = 0; y < height; y += len) {\n    for (let x = 0; x < width; x += len) {\n      let now = a_now[index];\n      let target = a_next[index];\n      let angle = now == target ? 0 : a_angle;\n      if (now) {\n        drawLeft(x, y, half, angle);\n      } else {\n        drawRight(x, y, half, angle);\n      }\n      index++;\n    }\n  }\n  if (check_cycle()) {\n    a_angle = (a_angle + 1) % a_angle_max;\n  }\n}\n\nfunction mousePressed() {\n  console.log(\"mousePressed\");\n  // fill_arr();\n  a_fill_pending = 1;\n}\n// return true to advance cycle\n// use a_angle to find seconds to pause in a_pause_dict\nfunction check_cycle() {\n  if (a_pause_start > 0) {\n    let now = millis();\n    if (now - a_pause_start > a_pause_lapse) {\n      a_pause_start = 0;\n      return true;\n    } else {\n      return false;\n    }\n  }\n  let lapse = a_pause_dict[a_angle];\n  if (lapse) {\n    a_pause_start = millis();\n    a_pause_lapse = lapse * 1000;\n\n    if (a_angle % 90 == 0) {\n      // console.log(\"a_angle\", a_angle, \"frameCount\", frameCount);\n      if (a_incr == 3) {\n        // fill_now_next();\n        // fill_next_random();\n      }\n    }\n    console.log('a_angle', a_angle, 'a_incr', a_incr);\n    console.log(\"a_now[0]\", a_now[0], \"a_next[0]\", a_next[0]);\n\n    if (a_angle == 0) {\n      a_incr = (a_incr + 1) % 2\n      // console.log('a_incr', a_incr, \"frameCount\", frameCount);\n      if (a_incr == 0) {\n        fill_next_incr();\n      }\n      // else if (a_incr == 2) {\n      //   fill_now_next();\n      //   fill_next_random();\n      // }\n      // else {\n      //   fill_next_random();\n      // }\n    }\n\n    return false;\n  } else {\n    return true;\n  }\n}\n\nfunction drawLeft(x, y, half, angle) {\n  push();\n  translate(x + half, y + half);\n  rotate(angle);\n  line(-half + 0, -half + 0, -half + len, -half + len);\n  pop();\n}\n\nfunction drawRight(x, y, half, angle) {\n  push();\n  noFill();\n  translate(x + half, y + half);\n  rotate(angle);\n  line(-half + len, -half + 0, -half + 0, -half + len);\n  pop();\n}\n\nfunction secsTime() {\n  return millis() / 1000;\n}\n\n\n// https://editor.p5js.org/jht9629-gmail/sketches/abgeEnTyf\n// maze tiles count\n\n// https://editor.p5js.org/jht9629-gmail/sketches/i2hCaC36l\n// maze tiles pause\n\n// https://editor.p5js.org/jht9629-gmail/sketches/LnPplI2CR\n// truchet tiles pause\n\n// https://editor.p5js.org/jht9629-gmail/sketches/EfQDCJ5aR\n// truchet tiles array\n\n// https://editor.p5js.org/jht9629-nyu/sketches/5TSs5XB6o\n// truchet tiles rotate\n\n// https://editor.p5js.org/jht9629-nyu/sketches/1CpIVSqp_d\n// truchet tiles re-factored\n\n// https://editor.p5js.org/jht9629-nyu/sketches/lBrb1cBQ7\n// truchet tiles copy\n\n// https://editor.p5js.org/ambikajo/sketches/cKu3Gn0Po\n// truchet tiles by ambikajo\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "64337dd160badc0373ad6ba4",
+        "isSelectedFile": true,
+        "createdAt": "2023-04-10T09:44:11.271Z",
+        "updatedAt": "2023-04-10T09:44:11.271Z",
+        "id": "64337dd160badc0373ad6ba4"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/addons/p5.sound.min.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n    <meta charset=\"utf-8\" />\n\n  </head>\n  <body>\n    <main>\n    </main>\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "64337dd160badc0373ad6ba3",
+        "createdAt": "2023-04-10T09:44:11.271Z",
+        "updatedAt": "2023-04-10T09:44:11.271Z",
+        "isSelectedFile": false,
+        "id": "64337dd160badc0373ad6ba3"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "64337dd160badc0373ad6ba5",
+        "createdAt": "2023-04-10T09:44:11.271Z",
+        "updatedAt": "2023-04-10T09:44:11.271Z",
+        "isSelectedFile": false,
+        "id": "64337dd160badc0373ad6ba5"
+      }
+    ],
+    "createdAt": "2023-04-10T03:09:05.241Z",
+    "updatedAt": "2023-04-10T09:44:11.271Z",
+    "id": "IagYeywkY"
+  },
+  {
+    "name": "maze tiles count",
+    "_id": "abgeEnTyf",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "643378cc60badc0373ad6b9f",
+          "643378cc60badc0373ad6ba0",
+          "643378cc60badc0373ad6ba1"
+        ],
+        "fileType": "folder",
+        "_id": "643378cc60badc0373ad6b9e",
+        "createdAt": "2023-04-10T03:08:31.880Z",
+        "updatedAt": "2023-04-10T03:08:31.880Z",
+        "isSelectedFile": false,
+        "id": "643378cc60badc0373ad6b9e"
+      },
+      {
+        "name": "sketch.js",
+        "content": "// https://editor.p5js.org/jht9629-gmail/sketches/abgeEnTyf\n// maze tiles count\n\nlet len = 40;\nlet a_angle = 0;\nlet a_now = [];\nlet a_next = [];\n// {count: seconds,...}\nlet a_pause_dict = { 0: 2.0, 90: 2.0 };\nlet a_pause_start = -1;\nlet a_pause_lapse;\nlet a_strokeWeight = 8;\nlet a_fill_pending = 0;\n\nfunction setup() {\n  createCanvas(400, 400);\n  angleMode(DEGREES);\n  noFill();\n  strokeWeight(a_strokeWeight);\n  fill_now();\n  fill_next();\n}\n\nfunction fill_now() {\n  a_now = [];\n  // Fill array a_arr with random true/false values\n  let index = 0\n  for (let x = 0; x < width; x += len) {\n    for (let y = 0; y < height; y += len) {\n      // let odd = random() > 0.5;\n      // let odd = index == 0\n      let odd = false\n      a_now.push(odd);\n      index++\n    }\n  }\n}\n\nfunction fill_next() {\n  a_next = [];\n  // Fill array a_arr with random true/false values\n  let index = 0\n  for (let x = 0; x < width; x += len) {\n    for (let y = 0; y < height; y += len) {\n      let odd = random() > 0.5;\n      // odd = index == 0\n      a_next.push(odd);\n      index++\n    }\n  }\n}\n\nfunction draw() {\n  let half = len / 2;\n  background(220);\n  let index = 0;\n  for (let x = 0; x < width; x += len) {\n    for (let y = 0; y < height; y += len) {\n      let now = a_now[index];\n      let next = a_next[index];\n      let angle = now == next ? 0 : a_angle;\n      if (now) {\n        drawLeft(x, y, half, angle);\n      } else {\n        drawRight(x, y, half, angle);\n      }\n      index++;\n    }\n  }\n  if (check_cycle()) {\n    a_angle = (a_angle + 1) % 180;\n  }\n}\n\nfunction mousePressed() {\n  console.log(\"mousePressed\");\n  // fill_arr();\n  a_fill_pending = 1;\n}\n// return true to advance cycle\n// use a_angle to find seconds to pause in a_pause_dict\nfunction check_cycle() {\n  if (a_pause_start > 0) {\n    let now = millis();\n    if (now - a_pause_start > a_pause_lapse) {\n      a_pause_start = 0;\n      return true;\n    } else {\n      return false;\n    }\n  }\n  let lapse = a_pause_dict[a_angle];\n  if (lapse) {\n    a_pause_start = millis();\n    a_pause_lapse = lapse * 1000;\n\n    if (a_angle == 0) {\n      console.log(\"a_angle\", a_angle, \"frameCount\", frameCount);\n      fill_next()\n    }\n\n    return false;\n  } else {\n    return true;\n  }\n}\n\nfunction drawLeft(x, y, half, angle) {\n  push();\n  translate(x + half, y + half);\n  rotate(angle);\n  line(-half + 0, -half + 0, -half + len, -half + len);\n  pop();\n}\n\nfunction drawRight(x, y, half, angle) {\n  push();\n  noFill();\n  translate(x + half, y + half);\n  rotate(angle);\n  line(-half + len, -half + 0, -half + 0, -half + len);\n  pop();\n}\n\n// https://editor.p5js.org/jht9629-gmail/sketches/i2hCaC36l\n// maze tiles pause\n\n// https://editor.p5js.org/jht9629-gmail/sketches/LnPplI2CR\n// truchet tiles pause\n\n// https://editor.p5js.org/jht9629-gmail/sketches/EfQDCJ5aR\n// truchet tiles array\n\n// https://editor.p5js.org/jht9629-nyu/sketches/5TSs5XB6o\n// truchet tiles rotate\n\n// https://editor.p5js.org/jht9629-nyu/sketches/1CpIVSqp_d\n// truchet tiles re-factored\n\n// https://editor.p5js.org/jht9629-nyu/sketches/lBrb1cBQ7\n// truchet tiles copy\n\n// https://editor.p5js.org/ambikajo/sketches/cKu3Gn0Po\n// truchet tiles by ambikajo\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "643378cc60badc0373ad6ba0",
+        "isSelectedFile": true,
+        "createdAt": "2023-04-10T03:08:31.880Z",
+        "updatedAt": "2023-04-10T03:08:31.880Z",
+        "id": "643378cc60badc0373ad6ba0"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/addons/p5.sound.min.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n    <meta charset=\"utf-8\" />\n\n  </head>\n  <body>\n    <main>\n    </main>\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "643378cc60badc0373ad6b9f",
+        "createdAt": "2023-04-10T03:08:31.880Z",
+        "updatedAt": "2023-04-10T03:08:31.880Z",
+        "isSelectedFile": false,
+        "id": "643378cc60badc0373ad6b9f"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "643378cc60badc0373ad6ba1",
+        "createdAt": "2023-04-10T03:08:31.880Z",
+        "updatedAt": "2023-04-10T03:08:31.880Z",
+        "isSelectedFile": false,
+        "id": "643378cc60badc0373ad6ba1"
+      }
+    ],
+    "createdAt": "2023-04-10T02:47:40.761Z",
+    "updatedAt": "2023-04-10T03:08:31.880Z",
+    "id": "abgeEnTyf"
+  },
+  {
+    "name": "maze tiles pause",
+    "_id": "i2hCaC36l",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "64336ca060badc0373ad6b9b",
+          "64336ca060badc0373ad6b9c",
+          "64336ca060badc0373ad6b9d"
+        ],
+        "fileType": "folder",
+        "_id": "64336ca060badc0373ad6b9a",
+        "createdAt": "2023-04-10T02:46:36.765Z",
+        "updatedAt": "2023-04-10T02:46:36.765Z",
+        "isSelectedFile": false,
+        "id": "64336ca060badc0373ad6b9a"
+      },
+      {
+        "name": "sketch.js",
+        "content": "// https://editor.p5js.org/jht9629-gmail/sketches/i2hCaC36l\n// maze tiles pause\n\nlet len = 40;\nlet a_angle = 0;\nlet a_arr = [];\nlet a_flip = [];\n// {count: seconds,...}\nlet a_pause_dict = { 0: 2.0, 90: 2.0, 180: 2.0, 270: 2.0 };\nlet a_pause_start = -1;\nlet a_pause_lapse;\nlet a_strokeWeight = 8;\nlet a_fill_pending = 0;\n\nfunction setup() {\n  createCanvas(400, 400);\n  angleMode(DEGREES);\n  noFill();\n  strokeWeight(a_strokeWeight);\n  fill_arr();\n  fill_flip();\n}\n\nfunction fill_arr() {\n  a_arr = [];\n  // Fill array a_arr with random true/false values\n  for (let x = 0; x < width; x += len) {\n    for (let y = 0; y < height; y += len) {\n      let odd = random() > 0.5;\n      a_arr.push(odd);\n    }\n  }\n}\n\nfunction fill_flip() {\n  a_flip = [];\n  // Fill array a_arr with random true/false values\n  for (let x = 0; x < width; x += len) {\n    for (let y = 0; y < height; y += len) {\n      let odd = random() > 0.5;\n      a_flip.push(odd);\n    }\n  }\n}\n\nfunction draw() {\n  let half = len / 2;\n  background(220);\n  let index = 0;\n  for (let x = 0; x < width; x += len) {\n    for (let y = 0; y < height; y += len) {\n      let odd = a_arr[index];\n      let flip = a_flip[index];\n      let angle = flip ? 0 : a_angle;\n      if (odd) {\n        drawLeft(x, y, half, angle);\n      } else {\n        drawRight(x, y, half, angle);\n      }\n      index++;\n    }\n  }\n  if (check_cycle()) {\n    a_angle = (a_angle + 1) % 360;\n  }\n}\n\nfunction mousePressed() {\n  console.log(\"mousePressed\");\n  // fill_arr();\n  a_fill_pending = 1;\n}\n// return true to advance cycle\n// use a_angle to find seconds to pause in a_pause_dict\nfunction check_cycle() {\n  if (a_pause_start > 0) {\n    let now = millis();\n    if (now - a_pause_start > a_pause_lapse) {\n      a_pause_start = 0;\n      return true;\n    } else {\n      return false;\n    }\n  }\n  let lapse = a_pause_dict[a_angle];\n  if (lapse) {\n    a_pause_start = millis();\n    a_pause_lapse = lapse * 1000;\n\n    if (a_angle == 0) {\n      console.log(\"a_angle\", a_angle, \"frameCount\", frameCount);\n      fill_flip()\n    }\n\n    return false;\n  } else {\n    return true;\n  }\n}\n\nfunction drawLeft(x, y, half, angle) {\n  push();\n  translate(x + half, y + half);\n  rotate(angle);\n  line(-half + 0, -half + 0, -half + len, -half + len);\n  pop();\n}\n\nfunction drawRight(x, y, half, angle) {\n  push();\n  noFill();\n  translate(x + half, y + half);\n  rotate(angle);\n  line(-half + len, -half + 0, -half + 0, -half + len);\n  pop();\n}\n\n// https://editor.p5js.org/jht9629-gmail/sketches/LnPplI2CR\n// truchet tiles pause\n\n// https://editor.p5js.org/jht9629-gmail/sketches/EfQDCJ5aR\n// truchet tiles array\n\n// https://editor.p5js.org/jht9629-nyu/sketches/5TSs5XB6o\n// truchet tiles rotate\n\n// https://editor.p5js.org/jht9629-nyu/sketches/1CpIVSqp_d\n// truchet tiles re-factored\n\n// https://editor.p5js.org/jht9629-nyu/sketches/lBrb1cBQ7\n// truchet tiles copy\n\n// https://editor.p5js.org/ambikajo/sketches/cKu3Gn0Po\n// truchet tiles by ambikajo\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "64336ca060badc0373ad6b9c",
+        "isSelectedFile": true,
+        "createdAt": "2023-04-10T02:46:36.765Z",
+        "updatedAt": "2023-04-10T02:46:36.765Z",
+        "id": "64336ca060badc0373ad6b9c"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/addons/p5.sound.min.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n    <meta charset=\"utf-8\" />\n\n  </head>\n  <body>\n    <main>\n    </main>\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "64336ca060badc0373ad6b9b",
+        "createdAt": "2023-04-10T02:46:36.765Z",
+        "updatedAt": "2023-04-10T02:46:36.765Z",
+        "isSelectedFile": false,
+        "id": "64336ca060badc0373ad6b9b"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "64336ca060badc0373ad6b9d",
+        "createdAt": "2023-04-10T02:46:36.765Z",
+        "updatedAt": "2023-04-10T02:46:36.765Z",
+        "isSelectedFile": false,
+        "id": "64336ca060badc0373ad6b9d"
+      }
+    ],
+    "createdAt": "2023-04-10T01:55:44.211Z",
+    "updatedAt": "2023-04-10T02:46:36.765Z",
+    "id": "i2hCaC36l"
+  },
+  {
+    "name": "MazeSpin",
+    "_id": "-FuOH_EE4",
+    "updatedAt": "2023-08-02T17:52:59.005Z",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "643aabed0b42368fe67fb508",
+          "643aabc10b42368fe67fb505",
+          "643aabc10b42368fe67fb504",
+          "643aabc10b42368fe67fb506",
+          "643aac0d81f2c3001a9b586f"
+        ],
+        "fileType": "folder",
+        "_id": "643aabc10b42368fe67fb507",
+        "isSelectedFile": false,
+        "createdAt": "2023-08-02T17:52:59.005Z",
+        "updatedAt": "2023-08-02T17:52:59.005Z",
+        "id": "643aabc10b42368fe67fb507"
+      },
+      {
+        "name": "sketch.js",
+        "content": "// https://editor.p5js.org/jht9629-gmail/sketches/-FuOH_EE4\n// MazeSpin\n// converted from p5VideoKit effects import style\n//   to <script src=\"\"> format used in p5VideoKit\n//\n\nlet my = {\n  // input: this.input,\n  width: 300,\n  height: 300,\n  ncells: 9,\n  strokeWeight: 0.5,\n  delta: 1,\n  step_period: 1,\n  pause_period: 1,\n  do_spiral: 1,\n  do_cycle: 2,\n  do_report: 0,\n};\nlet mazeSpin;\n\nfunction setup() {\n  createCanvas(my.width, my.height);\n\n  console.log(\"MazeSpin\", MazeSpin);\n  mazeSpin = new MazeSpin(my);\n}\n\nfunction draw() {\n  background(220);\n  mazeSpin.prepareOutput();\n  image(mazeSpin.output, 0, 0);\n}\n\n// https://github.com/jht1493/p5VideoKit/blob/main/src/effects/maze_spin/MazeSpin.js\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "643aabc10b42368fe67fb504",
+        "isSelectedFile": true,
+        "createdAt": "2023-08-02T17:52:59.005Z",
+        "updatedAt": "2023-08-02T17:52:59.005Z",
+        "id": "643aabc10b42368fe67fb504"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/addons/p5.sound.min.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n    <meta charset=\"utf-8\" />\n\n  </head>\n  <body>\n    <main>\n    </main>\n      \n<!--     <script type=\"module\" src=\"MazeSpin.js\"></script> -->\n\n    <script src=\"sub/SecondsTimer.js\"></script>\n    <script src=\"sub/SpiralWalker.js\"></script>\n    <script src=\"sub/array.js\"></script>\n    <script src=\"sub/report.js\"></script>\n    <script src=\"MazeSpin.js\"></script>\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "643aabc10b42368fe67fb505",
+        "isSelectedFile": false,
+        "createdAt": "2023-08-02T17:52:59.005Z",
+        "updatedAt": "2023-08-02T17:52:59.005Z",
+        "id": "643aabc10b42368fe67fb505"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "643aabc10b42368fe67fb506",
+        "isSelectedFile": false,
+        "createdAt": "2023-08-02T17:52:59.005Z",
+        "updatedAt": "2023-08-02T17:52:59.005Z",
+        "id": "643aabc10b42368fe67fb506"
+      },
+      {
+        "name": "MazeSpin.js",
+        "content": "// maze with rotating transition\n\n// import SpiralWalker from './sub/SpiralWalker.js';\n// import SecondsTimer from './sub/SecondsTimer.js';\n// import { report_1ofn, div_report } from './sub/report.js';\n// import { array_zero, array_add, array_random } from './sub/array.js';\n\n// export default \nclass MazeSpin {\n  // this.ncells\n  // this.width = this.width\n  // this.height = this.height\n  // this.strokeWeight = 0.5;\n  // this.delta = 1;\n  // this.step_period = 1.0;\n  // this.pause_period = 1.0; // 0.5;\n  // this.do_cycle = 0;\n  // this.do_spiral\n  constructor(props) {\n    // console.log('MazeSpin props', props);\n    Object.assign(this, props);\n\n    this.now = [];\n    this.next = [];\n    this.random = [];\n\n    this.report_lines = [];\n    this.div;\n\n    this.d = int(this.width / this.ncells);\n\n    this.output = createGraphics(this.width, this.height);\n    if (this.video_color) {\n      this.input_copy = createImage(this.width, this.height);\n    }\n    this.output.noFill();\n    this.output.strokeWeight(this.d * this.strokeWeight);\n\n    let n = this.do_spiral ? this.make_spiral_pts() : this.make_grid_pts();\n\n    array_zero(this.now, n);\n    array_zero(this.next, n);\n    array_zero(this.random, n);\n\n    array_add(this.next, this.delta);\n\n    this.target = this.next;\n\n    this.timer = new SecondsTimer();\n    this.timer.setPeriod(this.step_period);\n    if (this.do_cycle == 0) {\n      this.draw_step = 'draw_maze0_step';\n    } else if (this.do_cycle == 1) {\n      array_random(this.next);\n      this.draw_step = 'draw_maze1_step';\n    } else {\n      this.draw_step = 'draw_maze2_step0';\n    }\n\n    report_1ofn(this);\n    div_report(this, this.target, 'setup');\n  }\n\n  prepareOutput() {\n    // console.log('MazeSpin prepareOutput');\n    if (this.video_color) {\n      // copy(srcImage, sx, sy, sw, sh, dx, dy, dw, dh)\n      this.input_copy.copy(this.input, 0, 0, this.width, this.height, 0, 0, this.width, this.height);\n    }\n    this[this.draw_step]();\n  }\n\n  draw_maze_progress() {\n    this.draw_maze_at(this.timer.progress());\n  }\n\n  draw_maze_still() {\n    this.draw_maze_at(1.0);\n  }\n\n  draw_maze_at(at) {\n    // this.output.background(220);\n    this.output.clear();\n    let tangle = HALF_PI * at;\n    let half = this.d / 2;\n    for (let index = 0; index < this.pts.length; index++) {\n      let [x, y] = this.pts[index];\n      let now = this.now[index];\n      let target = this.target[index];\n      let angle = now == target ? 0 : tangle;\n      if (this.video_color) {\n        let col = this.input_copy.get(x, y);\n        this.output.stroke(col);\n      }\n      if (now) {\n        this.drawLeft(x, y, this.d, half, angle);\n      } else {\n        this.drawRight(x, y, this.d, half, angle);\n      }\n    }\n  }\n\n  // sequential\n  draw_maze0_step() {\n    this.draw_maze_progress();\n    if (this.timer.arrived()) {\n      this.timer.setPeriod(this.pause_period);\n      this.draw_step = 'draw_maze0_pause';\n    }\n  }\n\n  draw_maze0_pause() {\n    this.draw_maze_still();\n    if (this.timer.arrived()) {\n      array_add(this.now, this.delta);\n      array_add(this.next, this.delta);\n      //   div_report(this, this.target, 'draw_maze0_step');\n      this.timer.setPeriod(this.step_period);\n      this.draw_step = 'draw_maze0_step';\n    }\n  }\n\n  // random to random\n  draw_maze1_step() {\n    this.draw_maze_progress();\n    if (this.timer.arrived()) {\n      this.timer.setPeriod(this.pause_period);\n      this.draw_step = 'draw_maze1_pause';\n    }\n  }\n\n  draw_maze1_pause() {\n    this.draw_maze_still();\n    if (this.timer.arrived()) {\n      let oldNow = this.now;\n      this.now = this.next;\n      this.next = oldNow;\n      this.target = this.next;\n      array_random(this.target);\n      this.timer.setPeriod(this.step_period);\n      this.draw_step = 'draw_maze1_step';\n    }\n  }\n\n  // --\n  // sequencail - random - sequential\n  draw_maze2_step0() {\n    this.draw_maze_progress();\n    if (this.timer.arrived()) {\n      this.timer.setPeriod(this.pause_period);\n      this.draw_step = 'draw_maze2_pause0';\n    }\n  }\n\n  draw_maze2_pause0() {\n    this.draw_maze_still();\n    if (this.timer.arrived()) {\n      array_add(this.now, this.delta);\n      array_add(this.next, this.delta);\n      array_random(this.random);\n      this.target = this.random;\n      div_report(this, this.target, 'draw_maze2_step1');\n      this.timer.setPeriod(this.step_period);\n      this.draw_step = 'draw_maze2_step1';\n    }\n  }\n\n  draw_maze2_step1() {\n    this.draw_maze_progress();\n    if (this.timer.arrived()) {\n      this.timer.setPeriod(this.pause_period);\n      this.draw_step = 'draw_maze2_pause2';\n    }\n  }\n\n  draw_maze2_pause2() {\n    this.draw_maze_still();\n    if (this.timer.arrived()) {\n      let now_save = this.now;\n      this.now = this.target;\n      this.target = now_save;\n      div_report(this, this.target, 'draw_maze2_step2');\n      this.timer.setPeriod(this.step_period);\n      this.draw_step = 'draw_maze2_step2';\n    }\n  }\n\n  draw_maze2_step2() {\n    this.draw_maze_progress();\n    if (this.timer.arrived()) {\n      this.timer.setPeriod(this.pause_period);\n      this.draw_step = 'draw_maze2_pause3';\n    }\n  }\n\n  draw_maze2_pause3() {\n    this.draw_maze_still();\n    if (this.timer.arrived()) {\n      this.now = this.target;\n      this.target = this.next;\n      div_report(this, this.target, 'draw_maze2_step0');\n      this.timer.setPeriod(this.step_period);\n      this.draw_step = 'draw_maze2_step0';\n    }\n  }\n\n  // --\n  drawLeft(x, y, len, half, angle) {\n    this.output.push();\n    this.output.translate(x + half, y + half);\n    this.output.rotate(angle);\n    this.output.line(-half + 0, -half + 0, -half + len, -half + len);\n    this.output.pop();\n  }\n\n  drawRight(x, y, len, half, angle) {\n    this.output.push();\n    this.output.translate(x + half, y + half);\n    this.output.rotate(angle);\n    this.output.line(-half + len, -half + 0, -half + 0, -half + len);\n    this.output.pop();\n  }\n\n  // --\n  make_spiral_pts() {\n    this.pts = new SpiralWalker(this).points();\n    return this.pts.length;\n  }\n\n  make_grid_pts() {\n    let pts = [];\n    for (let y = 0; y < this.height; y += this.d) {\n      for (let x = 0; x < this.width; x += this.d) {\n        pts.push([x, y]);\n      }\n    }\n    let n = pts.length;\n    let nw = int(this.width / this.d);\n    let nh = int(this.height / this.d);\n    let half = int(n / 2);\n    // console.log('make_grid_pts n', n, 'half', half);\n    // console.log('make_grid_pts nw', nw, 'nh', nh);\n\n    // let offset = int(nw / 2) + int(nh / 2) * nw;\n    // let npts = [];\n    // for (let index = 0; index < n; index++) {\n    //   npts.push(pts[(index + offset) % n]);\n    // }\n    // this.pts = npts;\n\n    this.pts = pts;\n    return n;\n  }\n}\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "643aabed0b42368fe67fb508",
+        "isSelectedFile": false,
+        "createdAt": "2023-08-02T17:52:59.005Z",
+        "updatedAt": "2023-08-02T17:52:59.005Z",
+        "id": "643aabed0b42368fe67fb508"
+      },
+      {
+        "name": "sub",
+        "content": "",
+        "children": [
+          "643aac4281f2c3001a9b5956",
+          "643aac5981f2c3001a9b59c2",
+          "643aac1981f2c3001a9b589e",
+          "643aac32550c7d001ad8d8be"
+        ],
+        "fileType": "folder",
+        "_id": "643aac0d81f2c3001a9b586f",
+        "isSelectedFile": false,
+        "updatedAt": "2023-08-02T17:52:59.005Z",
+        "createdAt": "2023-08-02T17:52:59.005Z",
+        "id": "643aac0d81f2c3001a9b586f"
+      },
+      {
+        "name": "array.js",
+        "content": "// operations on an array of bits\n\n// export \nfunction array_zero(arr, n) {\n  // Fill array a_arr with random true/false values\n  for (let index = 0; index < n; index++) {\n    arr[index] = 0;\n  }\n}\n\n// export \nfunction array_add(arr, d) {\n  if (d == 1) {\n    array_incr(arr);\n  } else if (d == -1) {\n    array_decr(arr);\n  } else {\n    console.log('array_add bad d', d);\n  }\n}\n\n// export \nfunction array_decr(arr) {\n  let carry = 0;\n  for (let index = 0; index < arr.length; index++) {\n    let sum = arr[index] + 1 + carry;\n    // sum = 1, 2, 3\n    arr[index] = sum & 1;\n    carry = sum >> 1;\n    // carry = 0 or 1\n  }\n}\n\n// export \nfunction array_incr(arr) {\n  for (let index = 0; index < arr.length; index++) {\n    let sum = arr[index] + 1;\n    // sum is 1 or 2\n    if (sum == 1) {\n      arr[index] = 1;\n      break;\n    }\n    // zero and continue to carry the 2\n    arr[index] = 0;\n  }\n}\n\n// export \nfunction array_random(arr) {\n  for (let index = 0; index < arr.length; index++) {\n    let bit = random([0, 1]);\n    arr[index] = bit;\n  }\n}\n\n// export \nfunction array_copy_to_from(to, from) {\n  for (let index = 0; index < to.length; index++) {\n    to[index] = from[index];\n  }\n}\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "643aac1981f2c3001a9b589e",
+        "isSelectedFile": false,
+        "updatedAt": "2023-08-02T17:52:59.005Z",
+        "createdAt": "2023-08-02T17:52:59.005Z",
+        "id": "643aac1981f2c3001a9b589e"
+      },
+      {
+        "name": "report.js",
+        "content": "// report array of bits as BigInt in div\n\n// export \nfunction report_1ofn(my) {\n  if (!my.do_report) return;\n  let bnum = 2n ** BigInt(my.now.length);\n  let bstr = ' 0x' + bnum.toString(16).toUpperCase();\n  let str = '1 of ' + bnum.toLocaleString('en-US') + bstr + '<br/> ';\n  let div = createP('<code style=\"font-size:16px\">' + str + '</code>');\n  // div.style('margin-left:2px');\n}\n\n// export \nfunction div_report(my, arr, msg) {\n  // console.log('div_report', msg);\n  if (!my.do_report) return;\n  if (!my.div) {\n    my.div = createP();\n  }\n  let narr = arr.concat();\n  narr.reverse();\n  let str = narr.join('');\n  let bnum = BigInt('0b' + str);\n  // str = bnum.toLocaleString('en-US') + ' ' + msg + '<br/> ';\n  let bstr;\n  if (bnum >= 256n) {\n    bstr = ' 0x' + bnum.toString(16).toUpperCase();\n  } else {\n    bstr = ' 0b' + bnum.toString(2);\n  }\n  // &nbsp;\n  str = '' + bnum.toLocaleString('en-US') + bstr + '<br/> ';\n  my.report_lines.unshift(str);\n  while (my.report_lines.length > my.do_report) {\n    my.report_lines.pop();\n  }\n  my.div.elt.innerHTML = '<code style=\"font-size:16px\">' + my.report_lines.join('') + '</code>';\n}\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "643aac32550c7d001ad8d8be",
+        "isSelectedFile": false,
+        "updatedAt": "2023-08-02T17:52:59.005Z",
+        "createdAt": "2023-08-02T17:52:59.005Z",
+        "id": "643aac32550c7d001ad8d8be"
+      },
+      {
+        "name": "SecondsTimer.js",
+        "content": "// export default \nclass SecondsTimer {\n  // let timer = SecondsTimer(period)\n  //    period\n  //      = seconds between trigger\n  //      = -1 to never trigger\n  //\n  constructor(period) {\n    this.setPeriod(period);\n  }\n\n  // setPeriod(newPeriod)\n  // establish a new timer period\n  setPeriod(newPeriod) {\n    this.period = newPeriod;\n    this.start();\n  }\n\n  // establish start time\n  start() {\n    this.startSecs = secsTime();\n  }\n\n  // return seconds since start time established\n  lapse() {\n    let nowSecs = secsTime();\n    return nowSecs - this.startSecs;\n  }\n\n  // return truthy 1 if period seconds has passed\n  //    and restart timer if so.\n  arrived() {\n    let nowSecs = secsTime();\n    let lapse = nowSecs - this.startSecs;\n    if (this.period >= 0 && lapse > this.period) {\n      this.startSecs = nowSecs;\n      return 1;\n    }\n    return 0;\n  }\n\n  // return 0 to 1.0 as fraction of time to complete period\n  progress() {\n    return this.lapse() / this.period;\n  }\n}\n\n// return relative time in seconds\nfunction secsTime() {\n  return millis() / 1000;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "643aac4281f2c3001a9b5956",
+        "isSelectedFile": false,
+        "updatedAt": "2023-08-02T17:52:59.005Z",
+        "createdAt": "2023-08-02T17:52:59.005Z",
+        "id": "643aac4281f2c3001a9b5956"
+      },
+      {
+        "name": "SpiralWalker.js",
+        "content": "// create points for a spiral from the center\n\n// export default \nclass SpiralWalker {\n  //\n  // { width: 600, height: 400, d: 10 }\n  constructor(props) {\n    Object.assign(this, props);\n  }\n  points() {\n    // start with single pixel box in the center\n    // Left Top Right Bottom\n    this.L = this.width / 2;\n    this.T = this.height / 2;\n    this.R = this.L;\n    this.B = this.T;\n\n    let nw = this.width / this.d;\n    let nh = this.height / this.d;\n    let n = nw * nh;\n    // console.log('SpiralWalker nw', nw, 'mh', nh, 'n', n);\n\n    this.offset = nw & 1 ? -this.d / 2 : 0;\n    this.px = this.L;\n    this.py = this.T;\n\n    this.grow_box();\n\n    this.pts = [];\n    let d = this.d;\n\n    let more = 1;\n    while (more) {\n      // move up out of box\n      this.nx = this.px;\n      this.ny = this.py - d;\n      this.my_line({ dx: 0, dy: 0 });\n\n      // move right\n      this.nx = this.px + d;\n      while (this.nx < this.R) {\n        this.my_line({ dx: d, dy: 0 });\n      }\n      this.nx -= d;\n\n      // move down\n      this.ny += d;\n      while (this.ny < this.B) {\n        this.my_line({ dx: 0, dy: d });\n      }\n      this.ny -= d;\n\n      // move left\n      this.nx = this.px - d;\n      while (this.nx > this.L) {\n        this.my_line({ dx: -d, dy: 0 });\n      }\n      this.nx += d;\n\n      // move up\n      this.ny -= d;\n      while (this.ny > this.T) {\n        this.my_line({ dx: 0, dy: -d });\n      }\n      this.ny += d;\n\n      this.grow_box();\n\n      let morex = this.px >= 0 && this.px < this.width;\n      let morey = this.py >= 0 && this.py < this.height;\n      more = morex || morey;\n      // more = morex && morey;\n    }\n    // console.log(this.pts)\n\n    // first element repeated for length > 1\n    if (this.pts.length > 1) this.pts.splice(0, 1);\n\n    // console.log('SpiralWalker this.pts.length', this.pts.length);\n\n    return this.pts;\n  }\n\n  my_line({ dx, dy }) {\n    let x = this.nx;\n    let y = this.ny;\n    if (x >= 0 && x < this.width && y >= 0 && y < this.height) {\n      x += this.offset;\n      y += this.offset;\n      this.pts.push([x, y]);\n    }\n    // line(this.nx, this.ny, this.px, this.py);\n    this.px = this.nx;\n    this.py = this.ny;\n    this.nx += dx;\n    this.ny += dy;\n  }\n\n  grow_box() {\n    this.L -= this.d;\n    this.R += this.d;\n    this.T -= this.d;\n    this.B += this.d;\n  }\n}\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "643aac5981f2c3001a9b59c2",
+        "isSelectedFile": false,
+        "updatedAt": "2023-08-02T17:52:59.005Z",
+        "createdAt": "2023-08-02T17:52:59.005Z",
+        "id": "643aac5981f2c3001a9b59c2"
+      }
+    ],
+    "createdAt": "2023-04-15T13:51:58.402Z",
+    "id": "-FuOH_EE4"
+  },
+  {
+    "name": "mo-storage-dashboard",
+    "_id": "VWbtyZTnx",
+    "updatedAt": "2023-12-18T18:18:18.739Z",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "654babe69928459eceb71989",
+          "654baff5b2b740001ccc2e47",
+          "654baff5a077ec001aa90e8a",
+          "654baff5a077ec001aa90e8e",
+          "654baff541c7d5001ac9914a",
+          "654baff5a077ec001aa90e94",
+          "654baff541c7d5001ac9914d",
+          "654babe69928459eceb7198a",
+          "654baff541c7d5001ac99158",
+          "654baff5a077ec001aa90e90",
+          "654baff5b2b740001ccc2e4e",
+          "654baff5b2b740001ccc2e4c",
+          "654baff5b2b740001ccc2e4a"
+        ],
+        "fileType": "folder",
+        "_id": "654babe69928459eceb7198c",
+        "createdAt": "2023-12-18T18:18:18.739Z",
+        "updatedAt": "2023-12-18T18:18:18.739Z",
+        "isSelectedFile": false,
+        "id": "654babe69928459eceb7198c"
+      },
+      {
+        "name": "a_sketch.js",
+        "content": "// https://editor.p5js.org/jht9629-gmail/sketches/VWbtyZTnx\n// mo-storage-dashboard\n// https://molab-itp.github.io/98-MoGallery-p5js/demos/mo-storage-dashboard\n\nlet my = {\n  // update to verify change on mobile\n  version: '?v=030',\n  // Aspect ratio of video capture/\n  // will be scaled by rezScale\n  width: 480,\n  height: 640,\n  vFlip: 0, \n  facingMode: 'user',\n  face: 1,\n  showVideo: 1,\n  soundEnable: 0,\n  fcount: 1,\n  record: 0,\n  replay: 0,\n  uid: '-none-',\n  // scale: 16,\n  rezScale: 1,\n  // imageQuality: 0.01,\n  imageQuality: 1,\n  captionScale: 32,\n  interval: 1,\n  debugLog: 1,\n  count_base: 100,\n  count_max: 5,\n  colors: ['red', 'green', 'gold'],\n  colorIndex: 1,\n  logLinesMax: 3,\n  clipsName: 'clips',\n  recordCountDown: {\n    max: 3,\n    next_secs: 0,\n  },\n};\n\nfunction setup() {\n  console.log('mo-storage-video setup');\n\n  my_init();\n\n  my.canvas = createCanvas(my.width, my.height);\n\n  ui_init();\n\n  let config = fb_.init('jht9629');\n  // let config = fb_.init('jht1493');\n  ui_log('config.projectId', config.projectId);\n\n  fb_signIn();\n\n  textSize(40);\n}\n\nfunction draw() {\n  //\n  draw_update();\n\n  ui_update();\n\n  sound_draw();\n}\n\nfunction draw_update() {\n  if (!video_ready()) return;\n\n  // faster to get entire video frame as an image\n  let img = my.video.get();\n\n  let layer = my.layer;\n\n  if (my.showVideo) {\n    layer.image(img, 0, 0);\n  }\n\n  draw_number(my.count + 1 + my.count_base, { layer });\n  draw_millis(layer);\n  draw_dateISOString(layer);\n\n  if (my.replay) {\n    image(my.replayLayer, 0, 0, width, height);\n  } else {\n    image(layer, 0, 0, width, height);\n  }\n\n  record_state_track();\n\n  if (!my.record_preroll) {\n    draw_count();\n  }\n\n  let now = millis() / 1000;\n  if (now > my.next_secs) {\n    my.next_secs = now + my.interval;\n    update_interval();\n  }\n}\n\nfunction update_interval() {\n  // console.log('update_interval my.count', my.count);\n\n  if (my.replay) {\n    fstore_img_download();\n    if (my.soundEnable) {\n      sound_playback_start();\n    }\n  } else {\n    sound_playback_stop();\n  }\n\n  if (my.record_preroll) {\n    return;\n  }\n\n  if (my.record) {\n    fstore_img_upload();\n    if (my.count == 0 && my.soundEnable) {\n      sound_record_start();\n    }\n  }\n\n  if (my.fcount) {\n    if (adjust_count(1) && my.record) {\n      my.record = 0;\n      my.recordChk.checked(0);\n      my.replay = 1;\n      my.replayChk.checked(1);\n      if (my.soundEnable) {\n        sound_record_stop();\n      }\n    }\n  }\n}\n\nfunction adjust_count(delta) {\n  my.count = my.count + delta;\n  let wrap = 0;\n  if (my.count >= my.count_max) {\n    my.count = 0;\n    wrap = 1;\n  } else if (my.count < 0) {\n    my.count = my.count_max - 1;\n    wrap = 1;\n  }\n  return wrap;\n}\n\nfunction fb_signIn() {\n  let { signInAnonymously, auth } = fb_;\n  signInAnonymously(auth)\n    .then(() => {\n      ui_log('signInAnonymously OK');\n      my.uid = auth.currentUser.uid;\n    })\n    .catch((error) => {\n      const errorCode = error.code;\n      const errorMessage = error.message;\n      ui_log('fb_signIn errorCode', errorCode);\n      ui_log('fb_signIn errorMessage', errorMessage);\n    });\n}\n\n// https://en.wikipedia.org/wiki/15_minutes_of_fame\n// --> 15 seconds\n\n// setInterval will flood out draw when saving and replaying\n// setInterval(update_interval, my.interval * 1000);\n// frameRate(2);\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "654babe69928459eceb71989",
+        "isSelectedFile": false,
+        "createdAt": "2023-12-18T18:18:18.739Z",
+        "updatedAt": "2023-12-18T18:18:18.739Z",
+        "id": "654babe69928459eceb71989"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.8.0/p5.js\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.8.0/addons/p5.sound.min.js\"></script>\n\n    <!-- <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\" /> -->\n\n    <!-- make the buttons bigger on small screens -->\n    <style>\n      @media only screen and (max-width: 600px) {\n        body,\n        button,\n        select,\n        input {\n          font-size: 5vw;\n        }\n      }\n      html,\n      body {\n        margin: 0;\n        padding: 0;\n      }\n      canvas {\n        display: block;\n      }\n    </style>\n  </head>\n  <body>\n    <main></main>\n\n    <script type=\"module\" src=\"https://molab-itp.github.io/98-MoGallery-p5js/lib/0/fb_config.js\"></script>\n\n    <script src=\"a_sketch.js\"></script>\n    <script src=\"create_myVideo.js\"></script>\n    <script src=\"draw_number.js\"></script>\n    <script src=\"fstore_img_download.js\"></script>\n    <script src=\"fstore_img_upload.js\"></script>\n    <script src=\"fstore_list.js\"></script>\n    <script src=\"fstore_sound.js\"></script>\n    <script src=\"my_init.js\"></script>\n    <script src=\"record_state.js\"></script>\n    <script src=\"sound_draw.js\"></script>\n    <script src=\"sound.js\"></script>\n    <script src=\"ui_init.js\"></script>\n    <!-- v=027 included to force reload from cache\n      global search to find updates\n      must omit ?= in p5 editor\n     -->\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "654babe69928459eceb7198a",
+        "createdAt": "2023-12-18T18:18:18.739Z",
+        "updatedAt": "2023-12-18T18:18:18.739Z",
+        "isSelectedFile": true,
+        "id": "654babe69928459eceb7198a"
+      },
+      {
+        "name": "draw_number.js",
+        "content": "function draw_number(num, opt) {\n  let { layer, right, bottom, frac, noid, captionSize } = opt;\n\n  if (!captionSize) captionSize = my.captionSize;\n  layer.textSize(captionSize);\n\n  let str = num.toString();\n  if (frac) {\n    str = convert_timeFrac(num, frac);\n  }\n  str = str.padStart(my.image_seq_pad, '0');\n\n  let tw = layer.textWidth(str);\n  let th = layer.textLeading();\n  let ta = layer.textAscent();\n\n  let x = 0;\n  let y = 0;\n  if (right) {\n    x = layer.width - tw;\n  } else {\n    tw = layer.width / 2;\n    if (!noid) {\n      str += ' ' + my.uid.substring(0, 7);\n    }\n  }\n  if (bottom) {\n    y = layer.height - th;\n  }\n  let colr = my.colors[my.colorIndex];\n  if (right) colr = 0;\n  layer.fill(colr);\n  layer.rect(x, y, tw, th);\n  layer.fill(255);\n  layer.text(str, x, y + ta);\n}\n\nfunction convert_timeFrac(num, frac) {\n  let sec = int(num);\n  let fsec = int((num - sec) * 100);\n  let min = int(sec / 60);\n  sec -= min * 60;\n  let hours = int(min / 60);\n  min -= hours * 60;\n  // console.log('hours', hours, 'min', min, 'sec', sec, 'num', num);\n  let str = '.' + fsec.toString().padStart(2, 0);\n  if (sec != 0 || min != 0 || hours != 0) {\n    str = sec.toString().padStart(2, '0') + str;\n  }\n  if (min != 0 || hours != 0) {\n    str = min.toString().padStart(2, '0') + ':' + str;\n  }\n  if (hours != 0) {\n    str = hours.toString().padStart(2, '0') + ':' + str;\n  }\n  return str;\n}\n\nfunction draw_dateISOString(layer) {\n  let today = new Date();\n  let str = today.toISOString();\n\n  let capSize = my.captionSize;\n  layer.textSize(capSize);\n\n  let tw = layer.textWidth(str);\n  let th = layer.textLeading();\n  let ta = layer.textAscent();\n\n  let x = layer.width - tw;\n  let y = layer.height - th;\n\n  // let colr = my.colors[my.colorIndex];\n  layer.fill(0);\n  layer.rect(x, y, tw, th);\n  layer.fill(255);\n  layer.text(str, x, y + ta);\n}\n\nfunction draw_millis(layer) {\n  let fmt = { layer, right: 1, small: 1, frac: 2 };\n  draw_number(millis() / 1000, fmt);\n}\n\n// !!@ Always black on transparent\n// function draw_count() {\n//   let fmt = { layer: my.canvas, bottom: 1, noid: 1, captionSize: height / 30 };\n//   draw_number(my.count, fmt);\n//   // textSize(100);\n// }\n\n// !!@ fill and rect not drawn\n//  layer = my.canvas\n// !!@ layer vs. canvas inconsistency\n\n// Draw frame count or file name of last download to canvas\n//\nfunction draw_count() {\n  // let layer = my.canvas;\n  let layer = p5.instance;\n  let str = frame_count_str();\n  let captionSize = height / my.captionScale;\n  layer.textSize(captionSize);\n  let tw = layer.textWidth(str);\n  let th = layer.textLeading();\n  let ta = layer.textAscent();\n  // Draw center top\n  // let x = 0;\n  let x = width / 2 - tw / 2;\n  // let y = height - th;\n  let y = 0;\n  layer.strokeWeight(0);\n  if (my.record) {\n    layer.fill(255, 0, 0);\n  } else {\n    layer.fill(0);\n  }\n  layer.rect(x, y, tw, th);\n  layer.fill(255);\n  layer.text(str, x, y + ta);\n}\n\n// function draw_count() {\n//   let str = frame_count_str();\n//   let captionSize = height / my.captionScale;\n//   textSize(captionSize);\n//   let tw = textWidth(str);\n//   let th = textLeading();\n//   let ta = textAscent();\n//   // let x = 0;\n//   let x = width / 2 - tw / 2;\n//   // let y = height - th;\n//   let y = 0;\n//   fill(0);\n//   rect(x, y, tw, th);\n//   fill(255);\n//   text(str, x, y + ta);\n// }\n\nfunction frame_count_str() {\n  let num = my.count + my.count_base + 1;\n  let str = num.toString();\n  str = str.padStart(my.image_seq_pad, '0');\n  // Select the file name from the last download\n  if (my.replay) {\n    if (my.lastDownloadPath) {\n      let parts = my.lastDownloadPath.split('/');\n      if (parts.length > 0) {\n        str = parts[parts.length - 1];\n      }\n    } else {\n      str = '';\n    }\n  }\n  return str;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "654baff5a077ec001aa90e8a",
+        "updatedAt": "2023-12-18T18:18:18.739Z",
+        "createdAt": "2023-12-18T18:18:18.739Z",
+        "isSelectedFile": false,
+        "id": "654baff5a077ec001aa90e8a"
+      },
+      {
+        "name": "create_myVideo.js",
+        "content": "function create_myVideo() {\n  let options = { video: { facingMode: my.facingMode } };\n  my.video = createCapture(options);\n  my.video.size(my.vwidth, my.vheight);\n  my.video.hide();\n}\n\nfunction video_ready() {\n  return my.video.loadedmetadata && my.video.width > 0 && my.video.height > 0;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "654baff5b2b740001ccc2e47",
+        "updatedAt": "2023-12-18T18:18:18.739Z",
+        "createdAt": "2023-12-18T18:18:18.739Z",
+        "isSelectedFile": false,
+        "id": "654baff5b2b740001ccc2e47"
+      },
+      {
+        "name": "ui_init.js",
+        "content": "//\n// my.canvas is created before ui_init call\n//\nfunction ui_init() {\n  ui_init_controls();\n\n  ui_update();\n\n  // Move the canvas below all the ui elements\n  let belt = document.querySelector('body');\n  let melt = document.querySelector('main');\n  belt.insertBefore(melt, null);\n}\n\nfunction ui_init_controls() {\n  if (!my.replayName) {\n    create_myVideo();\n  }\n\n  my.verBtn = createButton(my.version.substring(1));\n  my.verBtn.mousePressed(function () {\n    location.reload();\n  });\n\n  create_clipsName_input();\n\n  createElement('br');\n\n  my.soundChk = createCheckbox('Sound', my.soundEnable);\n  my.soundChk.style('display:inline');\n  my.soundChk.changed(function () {\n    my.soundEnable = this.checked();\n    sound_state_update();\n  });\n\n  my.recordChk = createCheckbox('Record', my.record);\n  my.recordChk.style('display:inline');\n  my.recordChk.changed(function () {\n    my.record = this.checked();\n    record_state_update(my.record);\n    sound_state_update();\n  });\n\n  my.replayChk = createCheckbox('Replay', my.replay);\n  my.replayChk.style('display:inline');\n  my.replayChk.changed(function () {\n    my.replay = this.checked();\n    init_counts();\n  });\n\n  createElement('br');\n\n  create_count_selection();\n\n  create_resolution_selection();\n\n  createButton('Color+').mousePressed(function () {\n    my.colorIndex = (my.colorIndex + 1) % my.colors.length;\n  });\n\n  createElement('br');\n\n  if (!my.replayName) {\n    my.faceChk = createCheckbox('Face', my.face);\n    my.faceChk.style('display:inline');\n    my.faceChk.changed(faceChk_action);\n  }\n\n  my.videoChk = createCheckbox('Video', my.showVideo);\n  my.videoChk.style('display:inline');\n  my.videoChk.changed(function () {\n    my.showVideo = this.checked();\n  });\n\n  my.fcountChk = createCheckbox('Count', my.fcount);\n  my.fcountChk.style('display:inline');\n  my.fcountChk.changed(function () {\n    my.fcount = this.checked();\n  });\n\n  createButton('<-1').mousePressed(function () {\n    adjust_count(-1);\n    update_interval();\n  });\n\n  createButton('1+>').mousePressed(function () {\n    adjust_count(1);\n    update_interval();\n  });\n\n  createElement('br');\n}\n\nfunction create_clipsName_input() {\n  let elm = createInput(my.clipsName).input(function () {\n    my.clipsName = this.value();\n    clipsName_update();\n  });\n}\n\nfunction create_count_selection() {\n  let sel = createSelect();\n  sel.option('Count: 3', 3);\n  for (let index = 5; index <= 100; index += index) {\n    sel.option('Count: ' + index, index);\n  }\n  sel.option('Count: 99', 99);\n  sel.selected(my.count_max);\n  sel.changed(function () {\n    let nval = parseFloat(this.value());\n    my.count_max = nval;\n  });\n}\n\nfunction create_resolution_selection() {\n  let sel = createSelect();\n  for (let index = 1; index <= 8; index++) {\n    sel.option('Rez: ' + index, index);\n  }\n  sel.selected(my.rezScale);\n  sel.changed(function () {\n    let nval = parseFloat(this.value());\n    my.rezScale = nval;\n    init_layer();\n    my.video.remove();\n    create_myVideo();\n  });\n}\n\nfunction faceChk_action() {\n  my.face = this.checked();\n  my.facingMode = my.face ? 'user' : 'environment';\n  console.log('my.facingMode', my.facingMode);\n  my.video.remove();\n  create_myVideo();\n}\n\nfunction ui_update() {\n  ui_update_info();\n  my.ui_last = ui_break('break1');\n}\n\nfunction ui_update_info() {\n  // ui_span('updateCount', ' uc:' + my.updateCount);\n  // ui_span('nitems', ' ni:' + my.nitems);\n  if (my.guestName) {\n    ui_span('guestName', ' guestName:' + my.guestName);\n  }\n  if (my.replayName) {\n    ui_span('replayName', ' replayName:' + my.replayName);\n  }\n  if (my.uid) {\n    ui_span('uid', ' uid:' + my.uid);\n  }\n}\n\nfunction ui_break(id) {\n  let elm = select('#' + id);\n  if (!elm) {\n    elm = createElement('br').id(id);\n  }\n  return elm;\n}\n\nfunction ui_span(id, html) {\n  let span = select('#' + id);\n  if (document.fullscreenElement) {\n    if (span) {\n      span.remove();\n    }\n    return;\n  }\n  if (!span) {\n    span = createSpan().id(id);\n  }\n  span.html(html);\n  return span;\n}\n\nfunction ui_log(...args) {\n  // if (! my.debugLog) return\n  console.log(...args);\n  if (!my.logLines) {\n    my.logLines = [];\n    my.logDiv = createDiv('');\n  }\n  my.logLines.push(args.join(' '));\n  if (my.logLines.length > my.logLinesMax) {\n    my.logLines.splice(0, 1);\n  }\n  my.logDiv.html(my.logLines.join('<br/>'));\n}\n\nfunction ui_error(...args) {\n  ui_log(...args);\n}\n\n// createButton('<-100').mousePressed(function () {\n//   my.count_base -= 100;\n//   if (my.count_base < 0) {\n//     my.count_base = 0;\n//   }\n//   init_counts();\n// });\n\n// createButton('100+>').mousePressed(function () {\n//   my.count_base += 100;\n//   init_counts();\n// });\n\n// createButton('SignIn').mousePressed(function () {\n//   fb_signIn();\n// });\n\n// createButton('Reset count').mousePressed(function () {\n//   my.count = my.count_base;\n// });\n\n// createButton('Upload').mousePressed(function () {\n//   fstore_img_upload();\n// });\n\n// my.reloadBtn = createButton('Reload');\n// my.reloadBtn.mousePressed(function () {\n//   location.reload();\n// });\n\n// https://www.htmlsymbols.xyz/unicode/U+FF0B\n// Fullwidth plus sign\n\n// https://www.ssec.wisc.edu/~tomw/java/unicode.html\n\n// function init_replay() {\n//   // console.log('init_replay', my.replay);\n//   my.draw_func = my.replay ? draw_replay : draw_guest;\n// }\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "654baff5b2b740001ccc2e4a",
+        "updatedAt": "2023-12-18T18:18:18.739Z",
+        "createdAt": "2023-12-18T18:18:18.739Z",
+        "isSelectedFile": false,
+        "id": "654baff5b2b740001ccc2e4a"
+      },
+      {
+        "name": "sound_draw.js",
+        "content": "function sound_draw_init() {\n  my.volhistory = [];\n  my.lastMax = 0;\n}\n\nfunction sound_draw() {\n  let vol;\n  if (!my.soundEnable) {\n    return;\n  }\n  if (my.amp) {\n    vol = my.amp.getLevel();\n  } else if (my.mic) {\n    vol = my.mic.getLevel();\n  } else {\n    return;\n  }\n  // console.log('sound_draw vol', vol);\n  my.volhistory.push(vol);\n  strokeWeight(2);\n  let colr = my.colors[my.colorIndex];\n  stroke(colr);\n  noFill();\n  beginShape();\n  let nowMax = 0;\n  let nowMin = 1;\n  let xline = frameCount % width;\n  let yline = height;\n  let nv = my.volhistory.length;\n  let xoffset = 0;\n  if (nv < width) {\n    // sound wave starts from right edge\n    xoffset = width - nv;\n  }\n  for (let i = 0; i < nv; i++) {\n    let val = my.volhistory[i];\n    let y = map(val, 0, my.lastMax, height, 0);\n    vertex(xoffset + i, y);\n    if (val > my.lastMax) {\n      my.lastMax = val;\n    }\n    if (val > nowMax) {\n      nowMax = val;\n    }\n    // Skip of 0 index to avoid startup zero amplitude\n    if (val < nowMin && i > 0) {\n      nowMin = val;\n      xline = i;\n      yline = y;\n    }\n  }\n  my.lastMax = nowMax;\n  endShape();\n  if (my.volhistory.length > width) {\n    my.volhistory.splice(0, 1);\n  }\n  let bcolr = my.colors[(my.colorIndex + 1) % my.colors.length];\n  stroke(bcolr);\n  stroke(255, 255, 0);\n  line(0, yline, width, yline);\n  line(xline, yline, xline, height);\n}\n\n// https://editor.p5js.org/jht9629-nyu/sketches/pwLiHkndo\n// mic graph\n// graph the volume level of the mic\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "654baff5b2b740001ccc2e4c",
+        "updatedAt": "2023-12-18T18:18:18.739Z",
+        "createdAt": "2023-12-18T18:18:18.739Z",
+        "isSelectedFile": false,
+        "id": "654baff5b2b740001ccc2e4c"
+      },
+      {
+        "name": "fstore_img_download.js",
+        "content": "function fstore_img_download() {\n  // console.log('fstore_img_download ');\n  let path = next_imagePath(my.count);\n  // my.lastDownloadPath = null;\n  // ui_log('fstore_img_download next_imagePath ' + path);\n  let { storage, ref, getDownloadURL } = fb_.fstore;\n  getDownloadURL(ref(storage, path))\n    .then((url) => {\n      // `url` is the download URL for '1.jpeg'\n      // ui_log('fstore_img_download url', url);\n\n      // This can be downloaded directly:\n      const xhr = new XMLHttpRequest();\n      xhr.responseType = 'blob';\n      xhr.onload = (event) => {\n        const blob = xhr.response;\n        // ui_log('fstore_img_download blob ' + blob);\n        renderBlobToCanvas(blob);\n        my.lastDownloadPath = path;\n        if (my.img_download_log) {\n          ui_log('download ' + path);\n        }\n      };\n      xhr.open('GET', url);\n      xhr.send();\n\n      // Or inserted into an <img> element\n      // let img = createImg(url, 'img test');\n      // img.setAttribute('src', url);\n    })\n    .catch((error) => {\n      // Handle any errors\n      ui_error('fstore_getDownloadURL error', error);\n      my.replayLayer.fill(0);\n      my.replayLayer.rect(0, 0, width, height);\n    });\n}\n\n// https://stackoverflow.com/questions/38004917/how-to-render-a-blob-on-a-canvas-element\n// HTMLCanvasElement.prototype.renderImage = function(blob) {\n\nfunction renderBlobToCanvas(blob) {\n  // let elt = my.canvas.elt;\n  // let ctx = elt.getContext('2d');\n  // let ctx = my.canvas.drawingContext;\n  let ctx = my.replayLayer.drawingContext;\n  var img = new Image();\n  img.onload = function () {\n    ctx.drawImage(img, 0, 0, width, height);\n    URL.revokeObjectURL(img.src);\n  };\n  img.src = URL.createObjectURL(blob);\n}\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "654baff5a077ec001aa90e8e",
+        "updatedAt": "2023-12-18T18:18:18.739Z",
+        "createdAt": "2023-12-18T18:18:18.739Z",
+        "isSelectedFile": false,
+        "id": "654baff5a077ec001aa90e8e"
+      },
+      {
+        "name": "record_state.js",
+        "content": "function record_state_update(newState) {\n  init_counts();\n  my.record_preroll = newState;\n  let now = millis() / 1000;\n  my.recordCountDown.next_secs = now + my.recordCountDown.max;\n  if (newState) {\n    my.replay = 0;\n    my.replayChk.checked(0);\n  } else {\n    my.recordCountDown.next_secs = 0;\n  }\n}\n\nfunction record_state_track() {\n  //\n  let m = height * 0.08;\n  strokeWeight(m);\n  if (my.record && !my.record_preroll) {\n    stroke(255, 0, 0);\n    noFill();\n    rect(0, 0, width, height);\n  }\n  if (!my.record_preroll) {\n    return;\n  }\n  let now = millis() / 1000;\n  if (now > my.recordCountDown.next_secs) {\n    my.record_preroll = 0;\n    return;\n  }\n  let cnt = my.recordCountDown.next_secs - now;\n  cnt = int(cnt + 1);\n  let str = cnt + '';\n  let h = width * 1.4;\n  textSize(h);\n  let w = textSize(str);\n  // console.log('w', w);\n  // let x = (width - w) * 1;\n  let x = width * 0.1;\n  let y = height * 0.8;\n  strokeWeight(m * 0.025);\n  stroke(255, 0, 0);\n  fill(255, 0, 0);\n  text(cnt, x, y);\n}\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "654baff5a077ec001aa90e90",
+        "updatedAt": "2023-12-18T18:18:18.739Z",
+        "createdAt": "2023-12-18T18:18:18.739Z",
+        "isSelectedFile": false,
+        "id": "654baff5a077ec001aa90e90"
+      },
+      {
+        "name": "sound.js",
+        "content": "function sound_state_update() {\n  if (my.soundEnable) {\n    sound_init();\n  } else {\n    sound_playback_stop();\n  }\n}\n\nfunction sound_init() {\n  sound_AudioContext_resume();\n  // create an audio in\n  my.mic = new p5.AudioIn();\n  // users must manually enable their browser microphone for recording to work properly!\n  my.mic.start();\n  // create a sound recorder\n  my.recorder = new p5.SoundRecorder();\n  // connect the mic to the recorder\n  my.recorder.setInput(my.mic);\n  // create an empty sound file\n  // that we will use to playback the recording\n  my.soundFile = new p5.SoundFile();\n  my.sound_record_started = 0;\n\n  sound_draw_init();\n}\n\nfunction sound_record_start() {\n  console.log('sound_record_start');\n  if (my.sound_record_started) {\n    return;\n  }\n  my.sound_record_started = 1;\n  // Tell recorder to record to a p5.SoundFile\n  // which we will use for playback\n  my.recorder.record(my.soundFile);\n  // my.amp = new p5.Amplitude();\n  // my.amp.setInput(my.soundFile);\n}\n\nfunction sound_AudioContext_resume() {\n  let aSoundContext = getAudioContext();\n  // console.log('aSoundContext.state', aSoundContext.state);\n  if (aSoundContext.state !== 'running') {\n    aSoundContext.resume();\n  }\n}\n\nfunction sound_record_stop() {\n  console.log('sound_record_stop');\n  my.sound_record_started = 0;\n  // stop recorder, and send the result to soundFile\n  my.recorder.stop();\n  // Prepare for upload\n  my.fstore_sound_upload_started = 1;\n  my.fstore_sound_upload_completed = 0;\n  my.sound_downFile = null;\n\n  // Give record a sec before asking for blob\n  setTimeout(sound_getBlob, 1 * 1000);\n}\n\nfunction sound_playback_start() {\n  // console.log('sound_playback_start', my.sound_downFile ? 'soundFile' : '-');\n  // skip if soundfile is already playing\n  if (my.sound_downFile) {\n    return;\n  }\n  // Wait for upload to complete\n  if (\n    my.fstore_sound_upload_started && //\n    !my.fstore_sound_upload_completed\n  ) {\n    return;\n  }\n  // download the sound\n  fstore_sound_download();\n}\n\nfunction sound_playback_stop() {\n  // console.log('sound_playback_stop', my.sound_downFile ? 'soundFile' : '-');\n  if (!my.sound_downFile) {\n    return;\n  }\n  ui_log('sound_playback_stop', my.sound_downFile ? 'soundFile' : '-');\n  // stop the sound and reset vars\n  my.sound_downFile.stop();\n  my.sound_downFile = null;\n  my.sound_download_blob = null;\n  my.amp = null;\n}\n\nfunction sound_downloaded() {\n  my.sound_downFile.play();\n  my.sound_downFile.loop();\n  if (!my.amp) {\n    my.amp = new p5.Amplitude();\n  }\n  my.amp.setInput(my.sound_downFile);\n\n  sound_draw_init();\n}\n\n// https://p5js.org/reference/#/p5.SoundFile\n// new p5.SoundFile(path, [successCallback], [errorCallback], [whileLoadingCallback])\n\n// https://stackoverflow.com/questions/34934862/how-to-replay-an-audio-blob-in-javascript\n// const reader = new FileReader();\n// reader.onload = function(e) {\n//     const srcUrl = e.target.result;\n//     audioNode.src = srcUrl;\n// };\n// reader.readAsDataURL(blob);\n\n// https://p5js.org/reference/#/p5/getAudioContext\n// function draw() {\n//   background(255);\n//   textAlign(CENTER);\n\n//   if (getAudioContext().state !== 'running') {\n//     text('click to start audio', width/2, height/2);\n//   } else {\n//     text('audio is enabled', width/2, height/2);\n//   }\n// }\n// function touchStarted() {\n//   if (getAudioContext().state !== 'running') {\n//     getAudioContext().resume();\n//   }\n//   var synth = new p5.MonoSynth();\n//   synth.play('A4', 0.5, 0, 0.2);\n// }\n\n// startAudioContext\n// userStartAudio\n\n// https://p5js.org/reference/#/p5/userStartAudio\n\n// let a_audioCtx = getAudioContext();\n// a_audioCtx.resume();\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "654baff5b2b740001ccc2e4e",
+        "updatedAt": "2023-12-18T18:18:18.739Z",
+        "createdAt": "2023-12-18T18:18:18.739Z",
+        "isSelectedFile": false,
+        "id": "654baff5b2b740001ccc2e4e"
+      },
+      {
+        "name": "fstore_img_upload.js",
+        "content": "// https://firebase.google.com/docs/storage/web/upload-files?authuser=0#upload_from_a_blob_or_file\n\nfunction fstore_img_upload() {\n  // console.log('fstore_img_upload');\n  let count = my.count;\n  my.layer.elt.toBlob(\n    (blob) => {\n      fstore_img_upload_blob(blob, count);\n    },\n    my.imageType,\n    my.imageQuality\n  );\n}\n\nfunction fstore_img_upload_blob(blob, count) {\n  // console.log('fstore_img_upload_blob', blob);\n  let { storage, ref, uploadBytes } = fb_.fstore;\n  // let path = `/-mo-1/${fb_.auth.currentUser.uid}/000`;\n  my.imagePath = next_imagePath(count);\n  // ui_log('fstore_img_upload_blob my.imagePath', my.imagePath);\n  const storageRef = ref(storage, my.imagePath);\n\n  // 'file' comes from the Blob or File API\n  uploadBytes(storageRef, blob)\n    .then((snapshot) => {\n      // ui_log('snapshot.metadata.fullPath ' + snapshot.metadata.fullPath);\n      // console.log('snapshot', snapshot);\n      // console.log('Uploaded path', path);\n      ui_log('upload ', my.imagePath);\n    })\n    .catch((error) => {\n      // Handle any errors\n      ui_error('fstore_img_upload_blob error', error);\n    });\n}\n\nfunction next_imagePath(count) {\n  // console.log('next_imagePath');\n  let str = (count + my.count_base + 1).toString().padStart(my.image_seq_pad, '0');\n  return `${my.dbStoreRootPath}/${my.clipsName}/${str}${my.imagExt}`;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "654baff541c7d5001ac9914a",
+        "updatedAt": "2023-12-18T18:18:18.739Z",
+        "createdAt": "2023-12-18T18:18:18.739Z",
+        "isSelectedFile": false,
+        "id": "654baff541c7d5001ac9914a"
+      },
+      {
+        "name": "fstore_list.js",
+        "content": "// https://firebase.google.com/docs/storage/web/list-files#list_all_files\nfunction fstore_listAll(bucket) {\n  // console.log('fstore_listAll bucket', bucket);\n  let { storage, ref, listAll } = fb_.fstore;\n  bucket = bucket || my.dbStoreRootPath;\n  console.log('fstore_listAll bucket', bucket);\n  // Create a reference under which you want to list\n  // const listRef = ref(storage, 'oVFxc052pOWF5qq560qMuBmEsbr2');\n  // const listRef = ref(storage, '');\n  const listRef = ref(storage, bucket);\n  // console.log('listRef', listRef);\n  // Find all the prefixes and items.\n  listAll(listRef)\n    .then((res) => {\n      res.prefixes.forEach((folderRef) => {\n        // All the prefixes under listRef.\n        // You may call listAll() recursively on them.\n        // console.log('folderRef', folderRef);\n        // console.log('folderRef.path', folderRef.path); // Defined\n        // console.log('bucket', folderRef.bucket);\n        console.log('prefix fullPath', folderRef.fullPath);\n      });\n      res.items.forEach((itemRef) => {\n        // All the items under listRef.\n        // console.log('itemRef', itemRef);\n        console.log('item fullPath', itemRef.fullPath);\n      });\n    })\n    .catch((error) => {\n      // Uh-oh, an error occurred!\n      ui_error('fstore_listAll error', error);\n    });\n}\n\n// https://firebase.google.com/docs/storage/web/list-files#paginate_list_results\nfunction fstore_list(bucket) {\n  console.log('fstore_list bucket', bucket);\n  let { storage, ref, list } = fb_.fstore;\n  bucket = bucket || my.dbStoreRootPath;\n  // Create a reference under which you want to list\n  // const listRef = ref(storage, 'oVFxc052pOWF5qq560qMuBmEsbr2');\n  // const listRef = ref(storage, '');\n  const listRef = ref(storage, bucket);\n  console.log('listRef', listRef);\n  // Find all the prefixes and items.\n  list(listRef, { maxResults: 100 })\n    .then((res) => {\n      res.prefixes.forEach((folderRef) => {\n        // All the prefixes under listRef.\n        // You may call listAll() recursively on them.\n        // console.log('folderRef', folderRef);\n        // console.log('folderRef.path', folderRef.path); // Defined\n        // console.log('bucket', folderRef.bucket);\n        console.log('prefix fullPath', folderRef.fullPath);\n      });\n      res.items.forEach((itemRef) => {\n        // All the items under listRef.\n        // console.log('itemRef', itemRef);\n        console.log('item fullPath', itemRef.fullPath);\n      });\n    })\n    .catch((error) => {\n      // Uh-oh, an error occurred!\n      ui_error('fstore_list error', error);\n    });\n}\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "654baff5a077ec001aa90e94",
+        "updatedAt": "2023-12-18T18:18:18.739Z",
+        "createdAt": "2023-12-18T18:18:18.739Z",
+        "isSelectedFile": false,
+        "id": "654baff5a077ec001aa90e94"
+      },
+      {
+        "name": "fstore_sound.js",
+        "content": "function sound_getBlob() {\n  my.soundBlob = my.soundFile.getBlob();\n  // Upload the sound blob\n  fstore_sound_upload_blob(my.soundBlob, 0);\n}\n\nfunction fstore_sound_upload_blob(blob, count) {\n  console.log('fstore_sound_upload_blob', blob);\n  let { storage, ref, uploadBytes } = fb_.fstore;\n  my.soundPath = next_soundPath(count);\n  ui_log('fstore_sound_upload_blob my.soundPath', my.soundPath);\n  const storageRef = ref(storage, my.soundPath);\n  // 'file' comes from the Blob or File API\n  uploadBytes(storageRef, blob)\n    .then((snapshot) => {\n      // ui_log('snapshot.metadata.fullPath ' + snapshot.metadata.fullPath);\n      // console.log('snapshot', snapshot);\n      // console.log('Uploaded path', path);\n      ui_log('upload ', my.soundPath);\n      my.fstore_sound_upload_completed = 1;\n    })\n    .catch((error) => {\n      // Handle any errors\n      ui_error('fstore_sound_upload_blob error', error);\n    });\n}\n\nfunction next_soundPath(count) {\n  // console.log('next_soundPath');\n  let str = (count + my.count_base + 1).toString().padStart(my.image_seq_pad, '0');\n  return `${my.dbStoreRootPath}/${my.clipsName}/${str}.wav`;\n}\n\nfunction fstore_sound_download() {\n  // console.log('fstore_sound_download ');\n  let path = next_soundPath(0);\n  // ui_log('fstore_sound_download next_imagePath ' + path);\n  let { storage, ref, getDownloadURL } = fb_.fstore;\n  getDownloadURL(ref(storage, path))\n    .then((url) => {\n      const xhr = new XMLHttpRequest();\n      xhr.responseType = 'blob';\n      xhr.onload = (event) => {\n        const blob = xhr.response;\n        // ui_log('fstore_sound_download blob ' + blob);\n        ui_log('sound download ' + path);\n        sound_play_blob(blob);\n      };\n      xhr.open('GET', url);\n      xhr.send();\n    })\n    .catch((error) => {\n      // Handle any errors\n      ui_error('fstore_sound_download error', error);\n    });\n}\nfunction sound_play_blob(blob) {\n  my.sound_download_blob = blob;\n  const reader = new FileReader();\n  reader.onload = function (e) {\n    const srcUrl = e.target.result;\n    // console.log('sound_play_blob srcUrl', srcUrl);\n    my.sound_srcUrl = srcUrl;\n    my.sound_downFile = new p5.SoundFile(\n      srcUrl, //\n      sound_cb_ok,\n      sound_cb_error,\n      sound_cb_while\n    );\n  };\n  reader.readAsDataURL(blob);\n\n  function sound_cb_ok() {\n    // console.log('sound_cb_ok');\n    sound_downloaded();\n  }\n\n  function sound_cb_error(error) {\n    ui_error('sound_cb_error', error);\n  }\n\n  function sound_cb_while(prog) {\n    // console.log('sound_cb_while prog', prog);\n  }\n}\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "654baff541c7d5001ac9914d",
+        "updatedAt": "2023-12-18T18:18:18.739Z",
+        "createdAt": "2023-12-18T18:18:18.739Z",
+        "isSelectedFile": false,
+        "id": "654baff541c7d5001ac9914d"
+      },
+      {
+        "name": "my_init.js",
+        "content": "function my_init() {\n  //\n  pixelDensity(1);\n\n  // my.dbStoreRootPath = '-mo-storage-video-@w-';\n  my.dbStoreRootPath = '-mo-storage-dashboard-@w-';\n  console.log('my.dbStoreRootPath', my.dbStoreRootPath);\n\n  init_clipsName();\n\n  if (my.png) {\n    // png image type preserves white background\n    my.imageType = 'image/png';\n    my.imagExt = '.png';\n  } else {\n    // jpeg give black background\n    my.imageType = 'image/jpeg';\n    my.imagExt = '.jpg';\n  }\n  if (windowWidth < 600) {\n    my.width = windowWidth;\n    my.height = windowHeight;\n  }\n  if (my.vFlip) {\n    let temp = my.width;\n    my.width = my.height;\n    my.height = temp;\n  }\n\n  // image are store in sequence\n  // {my.dbStoreRootPath}/clips/${nums}${my.imagExt}\n  my.image_seq_pad = 3;\n\n  init_layer();\n\n  my.next_secs = millis() / 1000 + my.interval;\n\n  init_counts();\n\n  if (my.soundEnable) {\n    sound_init();\n  }\n\n  my.img_download_log = 0;\n}\n\nfunction init_clipsName() {\n  let today = new Date();\n  let str = today.toISOString();\n  clipsName_restore();\n  my.clipsName += '/' + str.substring(0, 10);\n}\n\nfunction clipsName_restore() {\n  let nclipsName = localStorage.getItem('clipsName');\n  console.log('clipsName_restore nclipsName', nclipsName);\n  if (!nclipsName) {\n    return;\n  }\n  my.clipsName = nclipsName;\n}\n\nfunction clipsName_update() {\n  console.log('clipsName_update my.clipsName', my.clipsName);\n  let parts = my.clipsName.split('/');\n  localStorage.setItem('clipsName', parts[0]);\n}\n\nfunction init_layer() {\n  let w = int(my.width / my.rezScale);\n  let h = int(my.height / my.rezScale);\n  my.layer = createGraphics(w, h);\n  my.vwidth = w;\n  my.vheight = h;\n  my.captionSize = my.layer.height / my.captionScale;\n  my.layer.noStroke();\n\n  my.replayLayer = createGraphics(my.width, my.height);\n}\n\nfunction init_counts() {\n  // my.image_seq_up = 0;\n  // my.image_seq_down = my.image_seq_max - 1;\n  // my.count = my.count_base;\n  my.count = 0;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "654baff541c7d5001ac99158",
+        "updatedAt": "2023-12-18T18:18:18.739Z",
+        "createdAt": "2023-12-18T18:18:18.739Z",
+        "isSelectedFile": false,
+        "id": "654baff541c7d5001ac99158"
+      }
+    ],
+    "createdAt": "2023-11-08T15:40:24.260Z",
+    "id": "VWbtyZTnx"
+  },
+  {
+    "name": "mouse ellipse",
+    "_id": "fiaNTD9Nj",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "64ca91fc63792fad5814bf31",
+          "64ca91fc63792fad5814bf32",
+          "64ca91fc63792fad5814bf33"
+        ],
+        "fileType": "folder",
+        "_id": "64ca91fc63792fad5814bf30",
+        "createdAt": "2023-08-02T17:45:45.430Z",
+        "updatedAt": "2023-08-02T17:45:45.430Z",
+        "isSelectedFile": false,
+        "id": "64ca91fc63792fad5814bf30"
+      },
+      {
+        "name": "sketch.js",
+        "content": "// https://editor.p5js.org/jht9629-gmail/sketches/fiaNTD9Nj\n// mouse ellipse\n\nfunction setup() {\n  createCanvas(windowWidth, windowHeight-50);\n  createA('../rect','next')\n}\n\nfunction draw() {\n  background(220,5);\n  noStroke()\n  fill(mouseX,mouseY,0)\n  ellipse(width/2,height/2,mouseX, mouseY)\n}",
+        "children": [],
+        "fileType": "file",
+        "_id": "64ca91fc63792fad5814bf32",
+        "isSelectedFile": true,
+        "createdAt": "2023-08-02T17:45:45.430Z",
+        "updatedAt": "2023-08-02T17:45:45.430Z",
+        "id": "64ca91fc63792fad5814bf32"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.js\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/addons/p5.sound.min.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n    <meta charset=\"utf-8\" />\n\n  </head>\n  <body>\n    <main>\n    </main>\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "64ca91fc63792fad5814bf31",
+        "createdAt": "2023-08-02T17:45:45.430Z",
+        "updatedAt": "2023-08-02T17:45:45.430Z",
+        "isSelectedFile": false,
+        "id": "64ca91fc63792fad5814bf31"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "64ca91fc63792fad5814bf33",
+        "createdAt": "2023-08-02T17:45:45.430Z",
+        "updatedAt": "2023-08-02T17:45:45.430Z",
+        "isSelectedFile": false,
+        "id": "64ca91fc63792fad5814bf33"
+      }
+    ],
+    "createdAt": "2023-08-02T17:27:24.406Z",
+    "updatedAt": "2023-08-02T17:45:45.430Z",
+    "id": "fiaNTD9Nj"
+  },
+  {
+    "name": "mouse rect",
+    "_id": "3IubAIXOX",
+    "updatedAt": "2023-08-02T17:31:37.428Z",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "64ca4ba86fe56aaa69bb37ef",
+          "64ca4ba86fe56aaa69bb37ee",
+          "64ca4ba86fe56aaa69bb37f0"
+        ],
+        "fileType": "folder",
+        "_id": "64ca4ba86fe56aaa69bb37f1",
+        "createdAt": "2023-08-02T17:31:37.428Z",
+        "updatedAt": "2023-08-02T17:31:37.428Z",
+        "isSelectedFile": false,
+        "id": "64ca4ba86fe56aaa69bb37f1"
+      },
+      {
+        "name": "sketch.js",
+        "content": "// https://editor.p5js.org/jht9629-gmail/sketches/3IubAIXOX\n// mouse rect\n\nfunction setup() {\n  createCanvas(windowWidth, windowHeight-50);\n  createA('../ellipse','next')\n}\n\nfunction draw() {\n  background(220,5);\n  noStroke()\n  fill(mouseX,0,mouseY)\n  rect(width/2-mouseX/2,height/2-mouseY/2,mouseX, mouseY)\n}",
+        "children": [],
+        "fileType": "file",
+        "_id": "64ca4ba86fe56aaa69bb37ee",
+        "isSelectedFile": true,
+        "createdAt": "2023-08-02T17:31:37.428Z",
+        "updatedAt": "2023-08-02T17:31:37.428Z",
+        "id": "64ca4ba86fe56aaa69bb37ee"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.js\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/addons/p5.sound.min.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n    <meta charset=\"utf-8\" />\n\n  </head>\n  <body>\n    <main>\n    </main>\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "64ca4ba86fe56aaa69bb37ef",
+        "createdAt": "2023-08-02T17:31:37.428Z",
+        "updatedAt": "2023-08-02T17:31:37.428Z",
+        "isSelectedFile": false,
+        "id": "64ca4ba86fe56aaa69bb37ef"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "64ca4ba86fe56aaa69bb37f0",
+        "createdAt": "2023-08-02T17:31:37.428Z",
+        "updatedAt": "2023-08-02T17:31:37.428Z",
+        "isSelectedFile": false,
+        "id": "64ca4ba86fe56aaa69bb37f0"
+      }
+    ],
+    "createdAt": "2023-08-02T12:27:51.051Z",
+    "id": "3IubAIXOX"
+  },
+  {
+    "name": "n columns hover v3",
+    "_id": "Tao-6oHD0",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "652c65aad2a6ef0f8aa6c590",
+          "652c65aad2a6ef0f8aa6c591",
+          "652c65aad2a6ef0f8aa6c592"
+        ],
+        "fileType": "folder",
+        "_id": "652c65aad2a6ef0f8aa6c58f",
+        "createdAt": "2023-10-16T16:40:00.411Z",
+        "updatedAt": "2023-10-16T16:40:00.411Z",
+        "isSelectedFile": false,
+        "id": "652c65aad2a6ef0f8aa6c58f"
+      },
+      {
+        "name": "sketch.js",
+        "content": "// https://editor.p5js.org/jht9629-gmail/sketches/Tao-6oHD0\n// n columns hover v3\n// over hover n columns flips between white and red\n\nlet aw;\nlet clr = [];\nlet wasIn = [];\nlet n = 10; // TRY: 2 ... 10\n\nfunction setup() {\n  createCanvas(400, 400);\n  aw = width / n;\n  // col1 = 255;\n  for (let index = 0; index < n; index++) {\n    clr[index] = 255;\n    wasIn[index] = false;\n  }\n}\n\nfunction draw() {\n  background(255);\n\n  let x = 0;\n  for (let index = 0; index < n; index++) {\n    let isIn = mouseX > x && mouseX < x+aw;\n    if (isIn) {\n      if (wasIn[index]) {\n        // still in column\n      } else {\n        // mouse moving into first colum\n        // flip color\n        clr[index] = clr[index] == \"red\" ? 255 : \"red\";\n        // if (clr == 'red') clr = 255;\n        // else clr = 'red'\n      }\n      // rect(0,0,aw,height)\n    }\n    wasIn[index] = isIn;\n\n    fill(clr[index]);\n    rect(x, 0, aw, height);\n    x += aw;\n  }\n}\n\n// https://editor.p5js.org/jht9629-gmail/sketches/-cX-O-25n\n// three columns hover v2\n\n// Change the behavior so that when you mouse over a column, you turn it red and it stays red until the next time you mouse over it again, at which point the column goes back to white. (Just get this working for one column.)\n\n// https://editor.p5js.org/jht9629-gmail/sketches/hLi5Fdtxo\n// three columns hover v1\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "652c65aad2a6ef0f8aa6c591",
+        "isSelectedFile": true,
+        "createdAt": "2023-10-16T16:40:00.411Z",
+        "updatedAt": "2023-10-16T16:40:00.411Z",
+        "id": "652c65aad2a6ef0f8aa6c591"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.js\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/addons/p5.sound.min.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n    <meta charset=\"utf-8\" />\n\n  </head>\n  <body>\n    <main>\n    </main>\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "652c65aad2a6ef0f8aa6c590",
+        "createdAt": "2023-10-16T16:40:00.411Z",
+        "updatedAt": "2023-10-16T16:40:00.411Z",
+        "isSelectedFile": false,
+        "id": "652c65aad2a6ef0f8aa6c590"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "652c65aad2a6ef0f8aa6c592",
+        "createdAt": "2023-10-16T16:40:00.411Z",
+        "updatedAt": "2023-10-16T16:40:00.411Z",
+        "isSelectedFile": false,
+        "id": "652c65aad2a6ef0f8aa6c592"
+      }
+    ],
+    "createdAt": "2023-10-15T22:20:26.361Z",
+    "updatedAt": "2023-10-16T16:40:00.411Z",
+    "id": "Tao-6oHD0"
+  },
+  {
+    "name": "Patch neem by bigmouthflower",
+    "_id": "zpk0FK0KZ",
+    "updatedAt": "2023-10-15T20:19:38.390Z",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "652c4918b057413cbd6d4f6c",
+          "652c4918b057413cbd6d4f6b",
+          "652c4918b057413cbd6d4f6d"
+        ],
+        "fileType": "folder",
+        "_id": "652c4918b057413cbd6d4f6e",
+        "createdAt": "2023-10-15T20:19:38.390Z",
+        "updatedAt": "2023-10-15T20:19:38.390Z",
+        "id": "652c4918b057413cbd6d4f6e"
+      },
+      {
+        "name": "sketch.js",
+        "content": "// https://editor.p5js.org/jht9629-gmail/sketches/zpk0FK0KZ\n// Patch neem by bigmouthflower\n\nlet frameCounter = 0;\nlet animationSpeed = 15; // Adjust this value for slower or faster animation\n\nfunction setup() {\n  createCanvas(400, 400);\n  frameRate(animationSpeed);\n}\n\nfunction draw() {\n  background(mouseX + 180, mouseX + 130, mouseX + 30);\n\n  for (var x = 25; x <= width; x += 100) {\n    for (var y = 20; y <= height; y += 50) {\n      let arcWidth = random(25, 50); // Random width between 20 and 60\n      let arcHeight = random(25, 50); // Random height between 20 and 60\n      let strokeG = random(150, 200);\n      stroke(strokeG + 90, strokeG, 0);\n      strokeWeight(5);\n      noFill();\n      arc(x, y, arcWidth, arcHeight, 0, PI + QUARTER_PI, OPEN);\n      arc(x + 50, y, arcWidth, arcHeight, PI + (3 / 4) * PI, PI, OPEN);\n      let pointX = random(x - 5, x + 5);\n      let pointY = random(y - 5, y + 5);\n      point(pointX, pointY + 10);\n      point(pointX + 50, pointY + 10);\n    }\n  }\n}\n\n// https://editor.p5js.org/bigmouthflower/sketches/KBfVMdXJ0\n// Patch neem by bigmouthflower\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "652c4918b057413cbd6d4f6b",
+        "isSelectedFile": true,
+        "createdAt": "2023-10-15T20:19:38.390Z",
+        "updatedAt": "2023-10-15T20:19:38.390Z",
+        "id": "652c4918b057413cbd6d4f6b"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.js\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/addons/p5.sound.min.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n    <meta charset=\"utf-8\" />\n\n  </head>\n  <body>\n    <main>\n    </main>\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "652c4918b057413cbd6d4f6c",
+        "createdAt": "2023-10-15T20:19:38.390Z",
+        "updatedAt": "2023-10-15T20:19:38.390Z",
+        "id": "652c4918b057413cbd6d4f6c"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "652c4918b057413cbd6d4f6d",
+        "createdAt": "2023-10-15T20:19:38.390Z",
+        "updatedAt": "2023-10-15T20:19:38.390Z",
+        "id": "652c4918b057413cbd6d4f6d"
+      }
+    ],
+    "createdAt": "2023-10-15T20:18:56.654Z",
+    "id": "zpk0FK0KZ"
+  },
+  {
+    "name": "Patch neem by bigmouthflower -- jht9629-gmail remix",
+    "_id": "CibQhizdZ",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "652c495db057413cbd6d4f70",
+          "652c495db057413cbd6d4f71",
+          "652c495db057413cbd6d4f72"
+        ],
+        "fileType": "folder",
+        "_id": "652c495db057413cbd6d4f6f",
+        "createdAt": "2023-10-15T22:45:56.880Z",
+        "updatedAt": "2023-10-15T22:45:56.880Z",
+        "isSelectedFile": false,
+        "id": "652c495db057413cbd6d4f6f"
+      },
+      {
+        "name": "sketch.js",
+        "content": "// https://editor.p5js.org/jht9629-gmail/sketches/CibQhizdZ\n// Patch neem by bigmouthflower -- jht9629-gmail remix\n// animation based on unit reference and a step cycle\n\nlet cx;\nlet cy;\nlet arcWidth;\nlet arcHeight;\nlet aStrokeWeight;\nlet aStep = 0.01; // TRY: 0.1, 0.01, 0.5\nlet aDelta = 0;\n\nfunction setup() {\n  createCanvas(400, 300);  // TRY: other sizes\n  // unit reference is the center of canvas\n  cx = width / 2;\n  cy = height / 2;\n  // variables cx and cy are our unit reference\n  // all measurements will be expression as ration of these\n  arcWidth = cx * 1.5;\n  arcHeight = cy * 1.5;\n  aStrokeWeight = cx * 0.4;\n}\n\nfunction draw() {\n  background(180, 130, 30);\n\n  var x = cx;\n  var y = cy;\n\n  let strokeG = 150;\n  stroke(strokeG + 90, strokeG, 0);\n  strokeWeight(aStrokeWeight);\n  noFill();\n\n  // TRY: uncommenting change to arcWidth | arcHeight \n  // arcWidth = cx * (1.0 + 0.5 * aDelta);\n  arcHeight = cy * (1.0 + 0.5 * aDelta);\n  arc(x, y, arcWidth, arcHeight, 0, PI, OPEN);\n\n  stroke(0);\n  point(x - cx * 0.4, y - cy * 0.5);\n  point(x + cx * 0.4, y - cy * 0.5);\n\n  strokeWeight(1);\n  arc(x, y, arcWidth, arcHeight, 0, PI, OPEN);\n  \n  // Cycle aDelta between 0 and 1\n  if (aDelta > 1 || aDelta < 0) {\n    aStep *= -1;\n  }\n  aDelta += aStep;\n  console.log('aDelta', aDelta)\n}\n\n// https://editor.p5js.org/jht9629-gmail/sketches/zpk0FK0KZ\n// Patch neem by bigmouthflower\n\n// https://editor.p5js.org/bigmouthflower/sketches/KBfVMdXJ0\n// Patch neem by bigmouthflower\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "652c495db057413cbd6d4f71",
+        "isSelectedFile": true,
+        "createdAt": "2023-10-15T22:45:56.880Z",
+        "updatedAt": "2023-10-15T22:45:56.880Z",
+        "id": "652c495db057413cbd6d4f71"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.js\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/addons/p5.sound.min.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n    <meta charset=\"utf-8\" />\n\n  </head>\n  <body>\n    <main>\n    </main>\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "652c495db057413cbd6d4f70",
+        "createdAt": "2023-10-15T22:45:56.880Z",
+        "updatedAt": "2023-10-15T22:45:56.880Z",
+        "isSelectedFile": false,
+        "id": "652c495db057413cbd6d4f70"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "652c495db057413cbd6d4f72",
+        "createdAt": "2023-10-15T22:45:56.880Z",
+        "updatedAt": "2023-10-15T22:45:56.880Z",
+        "isSelectedFile": false,
+        "id": "652c495db057413cbd6d4f72"
+      }
+    ],
+    "createdAt": "2023-10-15T20:19:41.417Z",
+    "updatedAt": "2023-10-15T22:45:56.880Z",
+    "id": "CibQhizdZ"
+  },
+  {
+    "name": "pixel combo",
+    "_id": "_BoYAq-PI",
+    "updatedAt": "2023-11-06T18:58:06.007Z",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "654861cda757655c15d81d3a",
+          "6548635d4c6bb4001ac7fd8c",
+          "654861cda757655c15d81d39",
+          "654861cda757655c15d81d3b"
+        ],
+        "fileType": "folder",
+        "_id": "654861cda757655c15d81d3c",
+        "isSelectedFile": false,
+        "createdAt": "2023-11-06T18:58:06.007Z",
+        "updatedAt": "2023-11-06T18:58:06.007Z",
+        "id": "654861cda757655c15d81d3c"
+      },
+      {
+        "name": "sketch.js",
+        "content": "// https://editor.p5js.org/jht9629-gmail/sketches/_BoYAq-PI\n// pixel combo\n\nlet upScale = 2;\n\nfunction setup() {\n  createCanvas(320 * upScale, 240 * upScale);\n  pixelDensity(1);\n  \n  setup_bright();\n  setup_paint();\n}\n\nfunction draw() {\n  // draw_random();\n  // draw_bright();\n  draw_paint();\n}\n\nfunction draw_random() {\n  background(51);\n\n  loadPixels();\n  for (let y = 0; y < height; y++) {\n    for (let x = 0; x < width; x++) {\n      let index = (x + y * width) * 4;\n      pixels[index + 0] = x;\n      pixels[index + 1] = random(255);\n      pixels[index + 2] = y;\n      pixels[index + 3] = 255;\n    }\n  }\n  updatePixels();\n}\n\nlet video;\nlet vScale = 16;\n\nfunction setup_bright() {\n  video = createCapture(VIDEO);\n  video.size(width / vScale, height / vScale);\n}\n\nfunction draw_bright() {\n  background(51);\n  if (! video.loadedmetadata) return;\n  video.loadPixels();\n  for (let y = 0; y < video.height; y++) {\n    for (let x = 0; x < video.width; x++) {\n      let index = (video.width - x + 1 + (y * video.width)) * 4;\n      // console.log('rgb', r, g, b)\n      let r = video.pixels[index + 0];\n      let g = video.pixels[index + 1];\n      let b = video.pixels[index + 2];\n      let bright = (r + g + b) / 3;\n      let w = map(bright, 0, 255, 0, vScale);\n      noStroke();\n      fill(255);\n      rectMode(CENTER);\n      rect(x * vScale, y * vScale, w, w);\n    }\n  }\n}\n\n// https://editor.p5js.org/jht9629-nyu/sketches/1DfZ5dRU1\n\n// https://editor.p5js.org/jht9629-nyu/sketches/a0HDzoroq\n\n// https://editor.p5js.org/jht9629-nyu/sketches/sd8fP5xtL\n\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "654861cda757655c15d81d39",
+        "isSelectedFile": true,
+        "createdAt": "2023-11-06T18:58:06.007Z",
+        "updatedAt": "2023-11-06T18:58:06.007Z",
+        "id": "654861cda757655c15d81d39"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.8.0/p5.js\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.8.0/addons/p5.sound.min.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n    <meta charset=\"utf-8\" />\n\n  </head>\n  <body>\n    <main>\n    </main>\n    <script src=\"paint.js\"></script>\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "654861cda757655c15d81d3a",
+        "isSelectedFile": false,
+        "createdAt": "2023-11-06T18:58:06.007Z",
+        "updatedAt": "2023-11-06T18:58:06.007Z",
+        "id": "654861cda757655c15d81d3a"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "654861cda757655c15d81d3b",
+        "isSelectedFile": false,
+        "createdAt": "2023-11-06T18:58:06.007Z",
+        "updatedAt": "2023-11-06T18:58:06.007Z",
+        "id": "654861cda757655c15d81d3b"
+      },
+      {
+        "name": "paint.js",
+        "content": "let particles = [];\nlet slider;\n\nfunction setup_paint() {\n  for (var i = 0; i < 200; i++) {\n    particles[i] = new Particle(random(width), random(height));\n  }\n  slider = createSlider(0, 255, 127);\n  background(0);\n}\n\nfunction draw_paint() {\n  video.loadPixels();\n  for (let i = 0; i < particles.length; i++) {\n    particles[i].update();\n    particles[i].show();\n  }\n}\n\nclass Particle {\n  constructor(x, y) {\n    this.x = x;\n    this.y = y;\n    this.r = random(4, 32);\n  }\n\n  update() {\n    this.x += random(-10, 10);\n    this.y += random(-10, 10);\n\n    this.x = constrain(this.x, 0, width);\n    this.y = constrain(this.y, 0, height);\n  }\n\n  show() {\n    noStroke();\n    let px = floor(this.x / vScale);\n    let py = floor(this.y / vScale);\n    let col = video.get(px, py);\n    //console.log(col);\n    fill(col[0], col[1], col[2], slider.value());\n    ellipse(this.x, this.y, this.r, this.r);\n  }\n}\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "6548635d4c6bb4001ac7fd8c",
+        "isSelectedFile": false,
+        "updatedAt": "2023-11-06T18:58:06.007Z",
+        "createdAt": "2023-11-06T18:58:06.007Z",
+        "id": "6548635d4c6bb4001ac7fd8c"
+      }
+    ],
+    "createdAt": "2023-11-06T03:48:11.895Z",
+    "id": "_BoYAq-PI"
+  },
+  {
+    "name": "pixel combo bands",
+    "_id": "xvdjaQIhM",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "65486564a757655c15d81d3e",
+          "65486564a757655c15d81d3f",
+          "65486564a757655c15d81d40",
+          "65486564a757655c15d81d41"
+        ],
+        "fileType": "folder",
+        "_id": "65486564a757655c15d81d3d",
+        "isSelectedFile": false,
+        "createdAt": "2023-11-06T18:53:59.684Z",
+        "updatedAt": "2023-11-06T18:53:59.684Z",
+        "id": "65486564a757655c15d81d3d"
+      },
+      {
+        "name": "sketch.js",
+        "content": "// https://editor.p5js.org/jht9629-gmail/sketches/xvdjaQIhM\n// pixel combo bands\n// effects in bands\n\nlet upScale = 2;\n\nfunction setup() {\n  createCanvas(320 * upScale, 240 * upScale);\n  pixelDensity(1);\n  \n  setup_bright();\n  setup_paint();\n}\n\nfunction draw() {\n  draw_random();\n  draw_bright();\n  draw_paint();\n}\n\nfunction draw_random() {\n  background(51);\n\n  let w1 = int(width / 3);\n  let w2 = int(w1 * 2);\n\n  loadPixels();\n  for (let y = 0; y < height; y++) {\n    for (let x = 0; x < w1; x++) {\n      let index = (x + y * width) * 4;\n      pixels[index + 0] = x;\n      pixels[index + 1] = random(255);\n      pixels[index + 2] = y;\n      pixels[index + 3] = 255;\n    }\n  }\n  updatePixels();\n}\n\nlet video;\nlet vScale = 16;\n\nfunction setup_bright() {\n  video = createCapture(VIDEO);\n  video.size(width / vScale, height / vScale);\n}\n\nfunction draw_bright() {\n  // background(51);\n  video.loadPixels();\n  \n  let w1 = int(video.width / 3);\n  let w2 = int(w1 * 2);\n\n  fill(51);\n  rectMode(CORNER);\n  rect(w1 * vScale, 0, w2 * vScale, height);\n  \n  for (let y = 0; y < video.height; y++) {\n    for (let x = w1; x < w2; x++) {\n      let index = (video.width - x + 1 + (y * video.width)) * 4;\n      // console.log('rgb', r, g, b)\n      let r = video.pixels[index + 0];\n      let g = video.pixels[index + 1];\n      let b = video.pixels[index + 2];\n      let bright = (r + g + b) / 3;\n      let w = map(bright, 0, 255, 0, vScale);\n      noStroke();\n      fill(255);\n      rectMode(CENTER);\n      rect(x * vScale, y * vScale, w, w);\n    }\n  }\n}\n\n// https://editor.p5js.org/jht9629-gmail/sketches/_BoYAq-PI\n// pixel combo\n\n// https://editor.p5js.org/jht9629-nyu/sketches/1DfZ5dRU1\n\n// https://editor.p5js.org/jht9629-nyu/sketches/a0HDzoroq\n\n// https://editor.p5js.org/jht9629-nyu/sketches/sd8fP5xtL\n\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "65486564a757655c15d81d40",
+        "isSelectedFile": false,
+        "createdAt": "2023-11-06T18:53:59.684Z",
+        "updatedAt": "2023-11-06T18:53:59.684Z",
+        "id": "65486564a757655c15d81d40"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.8.0/p5.js\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.8.0/addons/p5.sound.min.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n    <meta charset=\"utf-8\" />\n\n  </head>\n  <body>\n    <main>\n    </main>\n    <script src=\"paint.js\"></script>\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "65486564a757655c15d81d3e",
+        "isSelectedFile": false,
+        "createdAt": "2023-11-06T18:53:59.684Z",
+        "updatedAt": "2023-11-06T18:53:59.684Z",
+        "id": "65486564a757655c15d81d3e"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "65486564a757655c15d81d41",
+        "isSelectedFile": false,
+        "createdAt": "2023-11-06T18:53:59.684Z",
+        "updatedAt": "2023-11-06T18:53:59.684Z",
+        "id": "65486564a757655c15d81d41"
+      },
+      {
+        "name": "paint.js",
+        "content": "let particles = [];\nlet slider;\n\nfunction setup_paint() {\n  for (var i = 0; i < 400; i++) {\n    particles[i] = new Particle(random(width), random(height));\n  }\n  slider = createSlider(0, 255, 127);\n  background(0);\n}\n\nfunction draw_paint() {\n  if (! video.loadedmetadata) return;\n  video.loadPixels();\n  for (let i = 0; i < particles.length; i++) {\n    particles[i].run();\n  }\n}\n\nclass Particle {\n  constructor(x, y) {\n    this.x = x;\n    this.y = y;\n    this.r = random(4, 32);\n    this.w1 = width / 3;\n    this.w2 = this.w1 * 2;\n    this.w3 = this.w1 * 3;\n  }\n\n  run() {\n    this.update();\n    this.show();\n  }\n  \n  update() {\n    this.x += random(-10, 10);\n    this.y += random(-10, 10);\n\n    this.x = constrain(this.x, this.w2, this.w3);\n    this.y = constrain(this.y, 0, height);\n  }\n\n  show() {\n    noStroke();\n    let px = floor(this.x / vScale);\n    let py = floor(this.y / vScale);\n    let col = video.get(px, py);\n    //console.log(col);\n    fill(col[0], col[1], col[2], slider.value());\n    ellipse(this.x, this.y, this.r, this.r);\n  }\n}\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "65486564a757655c15d81d3f",
+        "isSelectedFile": true,
+        "updatedAt": "2023-11-06T18:53:59.684Z",
+        "createdAt": "2023-11-06T18:53:59.684Z",
+        "id": "65486564a757655c15d81d3f"
+      }
+    ],
+    "createdAt": "2023-11-06T04:02:44.481Z",
+    "updatedAt": "2023-11-06T18:53:59.684Z",
+    "id": "xvdjaQIhM"
+  },
+  {
+    "name": "pixel combo Layer",
+    "_id": "dLk5kCeTO",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "6549115746d719001aa149c7",
+          "654910c1d0446dc12db9033f",
+          "654910c1d0446dc12db90340",
+          "6549110646d719001aa13f3f",
+          "654910c1d0446dc12db90341",
+          "654910c1d0446dc12db90342"
+        ],
+        "fileType": "folder",
+        "_id": "654910c1d0446dc12db9033e",
+        "isSelectedFile": false,
+        "createdAt": "2023-11-06T19:00:30.872Z",
+        "updatedAt": "2023-11-06T19:00:30.872Z",
+        "id": "654910c1d0446dc12db9033e"
+      },
+      {
+        "name": "sketch.js",
+        "content": "// https://editor.p5js.org/jht9629-gmail/sketches/dLk5kCeTO\n// pixel combo Layer\n\nlet drawers = [\n  // draw_random, //\n  draw_bright,\n  // draw_paint,\n  // draw_paint,\n];\nlet drawers_index = 0;\nlet aRun = true;\nlet aNextSecs = 0;\nlet aDelay = 5.0;\n// let aDelays = [0.5, 1, 0.5, 1, 0.5, 4, 0.5, 4];\n// let aDelays = [1, 2, 3, 4];\nlet aDelays = [1]\nlet aDelayIndex = 0;\n\nlet upScale = 2;\n\nfunction setup() {\n  createCanvas(320 * upScale, 240 * upScale);\n  pixelDensity(1);\n\n  setup_bright();\n  setup_paint();\n  setup_random();\n  \n  createButton(\"Next\").mousePressed(next_action);\n\n  // checkbox time based running\n  createCheckbox('Run', aRun).changed(function() {\n    aRun = this.checked();\n  });\n  \n  aNextSecs = millis() / 1000.0 + aDelays[0];\n}\n\nfunction draw() {\n  draw_random();\n  draw_bright();\n  // draw_paint();\n}\n\nfunction draw_timed() {\n  let func = drawers[drawers_index];\n  func();\n  // if (aRun && frameCount % 60 == 0) {\n  //   next_action()\n  // }\n  let now = millis() / 1000.0\n  if (aRun && now > aNextSecs) {\n    aDelayIndex = (aDelayIndex + 1) % aDelays.length;\n    aDelay = aDelays[aDelayIndex]\n    aNextSecs = now + aDelay;\n    next_action();\n  }\n}\n\nfunction next_action() {\n  drawers_index = (drawers_index + 1) % drawers.length;\n}\n\n\n\n// https://editor.p5js.org/jht9629-gmail/sketches/tI8IX029X\n// pixel combo Next TIme millis aDelays\n\n// https://editor.p5js.org/jht9629-gmail/sketches/PPU_1IFRa\n// pixel combo Next TIme millis \n\n// https://editor.p5js.org/jht9629-gmail/sketches/4p4LPWvat\n// pixel combo Next TIme frameCount\n\n// https://editor.p5js.org/jht9629-gmail/sketches/b9tLAOHqq\n// pixel combo v3\n// Next drawing\n\n// https://editor.p5js.org/jht9629-gmail/sketches/xvdjaQIhM\n// pixel combo v2\n// effects in bands\n\n// https://editor.p5js.org/jht9629-gmail/sketches/_BoYAq-PI\n// pixel combo\n\n// https://editor.p5js.org/jht9629-nyu/sketches/1DfZ5dRU1\n\n// https://editor.p5js.org/jht9629-nyu/sketches/a0HDzoroq\n\n// https://editor.p5js.org/jht9629-nyu/sketches/sd8fP5xtL\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "654910c1d0446dc12db90341",
+        "isSelectedFile": true,
+        "createdAt": "2023-11-06T19:00:30.872Z",
+        "updatedAt": "2023-11-06T19:00:30.872Z",
+        "id": "654910c1d0446dc12db90341"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.8.0/p5.js\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.8.0/addons/p5.sound.min.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n    <meta charset=\"utf-8\" />\n\n  </head>\n  <body>\n    <main>\n    </main>\n    <script src=\"bright.js\"></script>\n    <script src=\"paint.js\"></script>\n    <script src=\"random.js\"></script>\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "654910c1d0446dc12db9033f",
+        "isSelectedFile": false,
+        "createdAt": "2023-11-06T19:00:30.872Z",
+        "updatedAt": "2023-11-06T19:00:30.872Z",
+        "id": "654910c1d0446dc12db9033f"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "654910c1d0446dc12db90342",
+        "isSelectedFile": false,
+        "createdAt": "2023-11-06T19:00:30.872Z",
+        "updatedAt": "2023-11-06T19:00:30.872Z",
+        "id": "654910c1d0446dc12db90342"
+      },
+      {
+        "name": "paint.js",
+        "content": "let particles = [];\nlet slider;\n\nfunction setup_paint() {\n  for (var i = 0; i < 200; i++) {\n    particles[i] = new Particle(random(width), random(height));\n  }\n  slider = createSlider(0, 255, 20);\n  background(0);\n}\n\nfunction draw_paint() {\n  if (! video.loadedmetadata) return;\n  video.loadPixels();\n  for (let i = 0; i < particles.length; i++) {\n    particles[i].run();\n  }\n}\n\nclass Particle {\n  constructor(x, y) {\n    this.x = x;\n    this.y = y;\n    this.r = random(4, 32);\n    this.w1 = width / 3;\n    this.w2 = this.w1 * 2;\n    this.w3 = this.w1 * 3;\n    this.xstart = 0;\n    this.xend = width;\n  }\n\n  run() {\n    this.update();\n    this.show();\n  }\n  \n  update() {\n    this.x += random(-10, 10);\n    this.y += random(-10, 10);\n\n    this.x = constrain(this.x, this.xstart, this.xend);\n    this.y = constrain(this.y, 0, height);\n  }\n\n  show() {\n    noStroke();\n    let px = floor(this.x / vScale);\n    let py = floor(this.y / vScale);\n    let col = video.get(px, py);\n    //console.log(col);\n    fill(col[0], col[1], col[2], slider.value());\n    ellipse(this.x, this.y, this.r, this.r);\n  }\n}\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "654910c1d0446dc12db90340",
+        "isSelectedFile": false,
+        "updatedAt": "2023-11-06T19:00:30.872Z",
+        "createdAt": "2023-11-06T19:00:30.872Z",
+        "id": "654910c1d0446dc12db90340"
+      },
+      {
+        "name": "random.js",
+        "content": "let aLayer;\n\nfunction setup_random() {\n  aLayer = createGraphics(width, height)\n  aLayer.clear();\n}\n\nfunction draw_random() {\n  // background(51);\n\n  // let w1 = int(width / 3);\n  // let w2 = int(w1 * 2);\n\n  aLayer.loadPixels();\n  for (let y = 0; y < height; y++) {\n    for (let x = 0; x < width; x++) {\n      let index = (x + y * width) * 4;\n      aLayer.pixels[index + 0] = x;\n      aLayer.pixels[index + 1] = random(255);\n      aLayer.pixels[index + 2] = y;\n      aLayer.pixels[index + 3] = 255;\n    }\n  }\n  aLayer.updatePixels();\n  \n  // image(aLayer, 0, 0)\n}\n\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "6549110646d719001aa13f3f",
+        "isSelectedFile": false,
+        "updatedAt": "2023-11-06T19:00:30.872Z",
+        "createdAt": "2023-11-06T19:00:30.872Z",
+        "id": "6549110646d719001aa13f3f"
+      },
+      {
+        "name": "bright.js",
+        "content": "let video;\nlet vScale = 16;\n\nfunction setup_bright() {\n  video = createCapture(VIDEO);\n  video.size(width / vScale, height / vScale);\n}\n\nfunction draw_bright() {\n  if (! video.loadedmetadata) return;\n\n  // background(51);\n  video.loadPixels();\n\n  let w1 = 0;\n  let w2 = video.width;\n\n  fill(51);\n  rectMode(CORNER);\n  rect(w1 * vScale, 0, w2 * vScale, height);\n\n  for (let y = 0; y < video.height; y++) {\n    for (let x = w1; x < w2; x++) {\n      let index = (video.width - x + 1 + y * video.width) * 4;\n      // console.log('rgb', r, g, b)\n      let r = video.pixels[index + 0];\n      let g = video.pixels[index + 1];\n      let b = video.pixels[index + 2];\n      let bright = (r + g + b) / 3;\n      let w = map(bright, 0, 255, 0, vScale);\n      noStroke();\n      fill(255);\n      rectMode(CENTER);\n      w = int(w)\n      let nx = int(x * vScale)\n      let ny = int(y * vScale)\n      if (w > 0) {\n        // console.log('nx, ny, w', nx, ny, w)\n        // let img = aLayer.get(nx, ny, w, w)\n        // image(img, dx, dy, dWidth, dHeight, sx, sy, [sWidth], [sHeight] \n        image(aLayer, nx, ny, w, w, nx, ny, w, w)        \n      }\n      // rect(nx, ny, w, w);\n    }\n  }\n}\n\n// https://p5js.org/reference/#/p5/image\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "6549115746d719001aa149c7",
+        "isSelectedFile": false,
+        "updatedAt": "2023-11-06T19:00:30.872Z",
+        "createdAt": "2023-11-06T19:00:30.872Z",
+        "id": "6549115746d719001aa149c7"
+      }
+    ],
+    "createdAt": "2023-11-06T16:13:54.079Z",
+    "updatedAt": "2023-11-06T19:00:30.872Z",
+    "id": "dLk5kCeTO"
+  },
+  {
+    "name": "pixel combo Next",
+    "_id": "b9tLAOHqq",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "65486eb7a757655c15d81d43",
+          "65486eb7a757655c15d81d44",
+          "65486eb7a757655c15d81d45",
+          "65486eb7a757655c15d81d46"
+        ],
+        "fileType": "folder",
+        "_id": "65486eb7a757655c15d81d42",
+        "isSelectedFile": false,
+        "createdAt": "2023-11-06T18:57:02.662Z",
+        "updatedAt": "2023-11-06T18:57:02.662Z",
+        "id": "65486eb7a757655c15d81d42"
+      },
+      {
+        "name": "sketch.js",
+        "content": "// https://editor.p5js.org/jht9629-gmail/sketches/b9tLAOHqq\n// pixel combo v3\n// Next drawing\n\nlet drawers = [draw_random, draw_paint, draw_bright, draw_paint];\nlet drawers_index = 0;\n\nlet upScale = 2;\n\nfunction setup() {\n  createCanvas(320 * upScale, 240 * upScale);\n  pixelDensity(1);\n  \n  setup_bright();\n  setup_paint();\n  \n  createButton('Next').mousePressed(function() {\n    drawers_index = (drawers_index + 1) % drawers.length;\n  });\n}\n\nfunction draw() {\n  let func = drawers[drawers_index];\n  func();\n  // draw_random();\n  // draw_bright();\n  // draw_paint();\n}\n\nfunction draw_random() {\n  background(51);\n\n  // let w1 = int(width / 3);\n  // let w2 = int(w1 * 2);\n\n  loadPixels();\n  for (let y = 0; y < height; y++) {\n    for (let x = 0; x < width; x++) {\n      let index = (x + y * width) * 4;\n      pixels[index + 0] = x;\n      pixels[index + 1] = random(255);\n      pixels[index + 2] = y;\n      pixels[index + 3] = 255;\n    }\n  }\n  updatePixels();\n}\n\nlet video;\nlet vScale = 16;\n\nfunction setup_bright() {\n  video = createCapture(VIDEO);\n  video.size(width / vScale, height / vScale);\n}\n\nfunction draw_bright() {\n  // background(51);\n  video.loadPixels();\n  \n  let w1 = 0;\n  let w2 = video.width;\n\n  fill(51);\n  rectMode(CORNER);\n  rect(w1 * vScale, 0, w2 * vScale, height);\n  \n  for (let y = 0; y < video.height; y++) {\n    for (let x = w1; x < w2; x++) {\n      let index = (video.width - x + 1 + (y * video.width)) * 4;\n      // console.log('rgb', r, g, b)\n      let r = video.pixels[index + 0];\n      let g = video.pixels[index + 1];\n      let b = video.pixels[index + 2];\n      let bright = (r + g + b) / 3;\n      let w = map(bright, 0, 255, 0, vScale);\n      noStroke();\n      fill(255);\n      rectMode(CENTER);\n      rect(x * vScale, y * vScale, w, w);\n    }\n  }\n}\n\n// https://editor.p5js.org/jht9629-gmail/sketches/xvdjaQIhM\n// pixel combo v2\n// effects in bands\n\n// https://editor.p5js.org/jht9629-gmail/sketches/_BoYAq-PI\n// pixel combo\n\n// https://editor.p5js.org/jht9629-nyu/sketches/1DfZ5dRU1\n\n// https://editor.p5js.org/jht9629-nyu/sketches/a0HDzoroq\n\n// https://editor.p5js.org/jht9629-nyu/sketches/sd8fP5xtL\n\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "65486eb7a757655c15d81d45",
+        "isSelectedFile": true,
+        "createdAt": "2023-11-06T18:57:02.662Z",
+        "updatedAt": "2023-11-06T18:57:02.662Z",
+        "id": "65486eb7a757655c15d81d45"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.8.0/p5.js\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.8.0/addons/p5.sound.min.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n    <meta charset=\"utf-8\" />\n\n  </head>\n  <body>\n    <main>\n    </main>\n    <script src=\"paint.js\"></script>\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "65486eb7a757655c15d81d43",
+        "isSelectedFile": false,
+        "createdAt": "2023-11-06T18:57:02.662Z",
+        "updatedAt": "2023-11-06T18:57:02.662Z",
+        "id": "65486eb7a757655c15d81d43"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "65486eb7a757655c15d81d46",
+        "isSelectedFile": false,
+        "createdAt": "2023-11-06T18:57:02.662Z",
+        "updatedAt": "2023-11-06T18:57:02.662Z",
+        "id": "65486eb7a757655c15d81d46"
+      },
+      {
+        "name": "paint.js",
+        "content": "let particles = [];\nlet slider;\n\nfunction setup_paint() {\n  for (var i = 0; i < 200; i++) {\n    particles[i] = new Particle(random(width), random(height));\n  }\n  slider = createSlider(0, 255, 20);\n  background(0);\n}\n\nfunction draw_paint() {\n  if (! video.loadedmetadata) return;\n  video.loadPixels();\n  for (let i = 0; i < particles.length; i++) {\n    particles[i].update();\n    particles[i].show();\n  }\n}\n\nclass Particle {\n  constructor(x, y) {\n    this.x = x;\n    this.y = y;\n    this.r = random(4, 32);\n    this.w1 = width / 3;\n    this.w2 = this.w1 * 2;\n    this.w3 = this.w1 * 3;\n    this.xstart = 0;\n    this.xend = width;\n  }\n\n  run() {\n    update();\n    show();\n  }\n  \n  update() {\n    this.x += random(-10, 10);\n    this.y += random(-10, 10);\n\n    this.x = constrain(this.x, this.xstart, this.xend);\n    this.y = constrain(this.y, 0, height);\n  }\n\n  show() {\n    noStroke();\n    let px = floor(this.x / vScale);\n    let py = floor(this.y / vScale);\n    let col = video.get(px, py);\n    //console.log(col);\n    fill(col[0], col[1], col[2], slider.value());\n    ellipse(this.x, this.y, this.r, this.r);\n  }\n}\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "65486eb7a757655c15d81d44",
+        "isSelectedFile": false,
+        "updatedAt": "2023-11-06T18:57:02.662Z",
+        "createdAt": "2023-11-06T18:57:02.662Z",
+        "id": "65486eb7a757655c15d81d44"
+      }
+    ],
+    "createdAt": "2023-11-06T04:42:31.210Z",
+    "updatedAt": "2023-11-06T18:57:02.662Z",
+    "id": "b9tLAOHqq"
+  },
+  {
+    "name": "pixel combo Next TIme frameCount",
+    "_id": "4p4LPWvat",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "6548ce227ce63b85ac8c2634",
+          "6548ce227ce63b85ac8c2635",
+          "6548ce227ce63b85ac8c2636",
+          "6548ce227ce63b85ac8c2637"
+        ],
+        "fileType": "folder",
+        "_id": "6548ce227ce63b85ac8c2633",
+        "isSelectedFile": false,
+        "createdAt": "2023-11-06T13:21:59.259Z",
+        "updatedAt": "2023-11-06T13:21:59.259Z",
+        "id": "6548ce227ce63b85ac8c2633"
+      },
+      {
+        "name": "sketch.js",
+        "content": "// https://editor.p5js.org/jht9629-gmail/sketches/4p4LPWvat\n// pixel combo Next TIme frameCount\n\nlet drawers = [\n  draw_random, //\n  draw_paint,\n  draw_bright,\n  draw_paint,\n];\nlet drawers_index = 0;\nlet aRun = false;\n\nfunction setup() {\n  createCanvas(320, 240);\n  pixelDensity(1);\n\n  setup_bright();\n  setup_paint();\n\n  createButton(\"Next\").mousePressed(next_action);\n\n  // checkbox time based running\n  createCheckbox('Run', aRun).changed(function() {\n    aRun = this.checked();\n  });\n\n}\n\nfunction draw() {\n  let func = drawers[drawers_index];\n  func();\n  // draw_random();\n  // draw_bright();\n  // draw_paint();\n  if (aRun && frameCount % 60 == 0) {\n    next_action()\n  }\n}\n\nfunction next_action() {\n  drawers_index = (drawers_index + 1) % drawers.length;\n}\n\nfunction draw_random() {\n  background(51);\n\n  // let w1 = int(width / 3);\n  // let w2 = int(w1 * 2);\n\n  loadPixels();\n  for (let y = 0; y < height; y++) {\n    for (let x = 0; x < width; x++) {\n      let index = (x + y * width) * 4;\n      pixels[index + 0] = x;\n      pixels[index + 1] = random(255);\n      pixels[index + 2] = y;\n      pixels[index + 3] = 255;\n    }\n  }\n  updatePixels();\n}\n\nlet video;\nlet vScale = 16;\n\nfunction setup_bright() {\n  video = createCapture(VIDEO);\n  video.size(width / vScale, height / vScale);\n}\n\nfunction draw_bright() {\n  // background(51);\n  video.loadPixels();\n\n  let w1 = 0;\n  let w2 = video.width;\n\n  fill(51);\n  rectMode(CORNER);\n  rect(w1 * vScale, 0, w2 * vScale, height);\n\n  for (let y = 0; y < video.height; y++) {\n    for (let x = w1; x < w2; x++) {\n      let index = (video.width - x + 1 + y * video.width) * 4;\n      // console.log('rgb', r, g, b)\n      let r = video.pixels[index + 0];\n      let g = video.pixels[index + 1];\n      let b = video.pixels[index + 2];\n      let bright = (r + g + b) / 3;\n      let w = map(bright, 0, 255, 0, vScale);\n      noStroke();\n      fill(255);\n      rectMode(CENTER);\n      rect(x * vScale, y * vScale, w, w);\n    }\n  }\n}\n\n// https://editor.p5js.org/jht9629-gmail/sketches/b9tLAOHqq\n// pixel combo v3\n// Next drawing\n\n// https://editor.p5js.org/jht9629-gmail/sketches/xvdjaQIhM\n// pixel combo v2\n// effects in bands\n\n// https://editor.p5js.org/jht9629-gmail/sketches/_BoYAq-PI\n// pixel combo\n\n// https://editor.p5js.org/jht9629-nyu/sketches/1DfZ5dRU1\n\n// https://editor.p5js.org/jht9629-nyu/sketches/a0HDzoroq\n\n// https://editor.p5js.org/jht9629-nyu/sketches/sd8fP5xtL\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "6548ce227ce63b85ac8c2636",
+        "isSelectedFile": true,
+        "createdAt": "2023-11-06T13:21:59.259Z",
+        "updatedAt": "2023-11-06T13:21:59.259Z",
+        "id": "6548ce227ce63b85ac8c2636"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.8.0/p5.js\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.8.0/addons/p5.sound.min.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n    <meta charset=\"utf-8\" />\n\n  </head>\n  <body>\n    <main>\n    </main>\n    <script src=\"paint.js\"></script>\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "6548ce227ce63b85ac8c2634",
+        "isSelectedFile": false,
+        "createdAt": "2023-11-06T13:21:59.259Z",
+        "updatedAt": "2023-11-06T13:21:59.259Z",
+        "id": "6548ce227ce63b85ac8c2634"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "6548ce227ce63b85ac8c2637",
+        "isSelectedFile": false,
+        "createdAt": "2023-11-06T13:21:59.259Z",
+        "updatedAt": "2023-11-06T13:21:59.259Z",
+        "id": "6548ce227ce63b85ac8c2637"
+      },
+      {
+        "name": "paint.js",
+        "content": "let particles = [];\nlet slider;\n\nfunction setup_paint() {\n  for (var i = 0; i < 200; i++) {\n    particles[i] = new Particle(random(width), random(height));\n  }\n  slider = createSlider(0, 255, 20);\n  background(0);\n}\n\nfunction draw_paint() {\n  if (! video.loadedmetadata) return;\n  video.loadPixels();\n  for (let i = 0; i < particles.length; i++) {\n    particles[i].update();\n    particles[i].show();\n  }\n}\n\nclass Particle {\n  constructor(x, y) {\n    this.x = x;\n    this.y = y;\n    this.r = random(4, 32);\n    this.w1 = width / 3;\n    this.w2 = this.w1 * 2;\n    this.w3 = this.w1 * 3;\n    this.xstart = 0;\n    this.xend = width;\n  }\n\n  run() {\n    update();\n    show();\n  }\n  \n  update() {\n    this.x += random(-10, 10);\n    this.y += random(-10, 10);\n\n    this.x = constrain(this.x, this.xstart, this.xend);\n    this.y = constrain(this.y, 0, height);\n  }\n\n  show() {\n    noStroke();\n    let px = floor(this.x / vScale);\n    let py = floor(this.y / vScale);\n    let col = video.get(px, py);\n    //console.log(col);\n    fill(col[0], col[1], col[2], slider.value());\n    ellipse(this.x, this.y, this.r, this.r);\n  }\n}\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "6548ce227ce63b85ac8c2635",
+        "isSelectedFile": false,
+        "updatedAt": "2023-11-06T13:21:59.259Z",
+        "createdAt": "2023-11-06T13:21:59.259Z",
+        "id": "6548ce227ce63b85ac8c2635"
+      }
+    ],
+    "createdAt": "2023-11-06T11:29:38.621Z",
+    "updatedAt": "2023-11-06T13:21:59.259Z",
+    "id": "4p4LPWvat"
+  },
+  {
+    "name": "pixel combo Next TIme millis",
+    "_id": "PPU_1IFRa",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "6548e87d7ce63b85ac8c2639",
+          "6548e87d7ce63b85ac8c263a",
+          "6548e87d7ce63b85ac8c263b",
+          "6548e87d7ce63b85ac8c263c"
+        ],
+        "fileType": "folder",
+        "_id": "6548e87d7ce63b85ac8c2638",
+        "isSelectedFile": false,
+        "createdAt": "2023-11-06T13:27:10.542Z",
+        "updatedAt": "2023-11-06T13:27:10.542Z",
+        "id": "6548e87d7ce63b85ac8c2638"
+      },
+      {
+        "name": "sketch.js",
+        "content": "// https://editor.p5js.org/jht9629-gmail/sketches/PPU_1IFRa\n// pixel combo Next TIme millis\n\nlet drawers = [\n  draw_random, //\n  draw_paint,\n  draw_bright,\n  draw_paint,\n];\nlet drawers_index = 0;\nlet aRun = false;\nlet aNextSecs = 0;\nlet aDelay = 5.0;\n\nfunction setup() {\n  createCanvas(320, 240);\n  pixelDensity(1);\n\n  setup_bright();\n  setup_paint();\n\n  createButton(\"Next\").mousePressed(next_action);\n\n  // checkbox time based running\n  createCheckbox('Run', aRun).changed(function() {\n    aRun = this.checked();\n  });\n\n  aNextSecs = millis() / 1000.0 + aDelay;\n}\n\nfunction draw() {\n  let func = drawers[drawers_index];\n  func();\n  // if (aRun && frameCount % 60 == 0) {\n  //   next_action()\n  // }\n  let now = millis() / 1000.0\n  if (aRun && now > aNextSecs) {\n    aNextSecs = now + aDelay;\n    next_action();\n  }\n}\n\nfunction next_action() {\n  drawers_index = (drawers_index + 1) % drawers.length;\n}\n\nfunction draw_random() {\n  background(51);\n\n  // let w1 = int(width / 3);\n  // let w2 = int(w1 * 2);\n\n  loadPixels();\n  for (let y = 0; y < height; y++) {\n    for (let x = 0; x < width; x++) {\n      let index = (x + y * width) * 4;\n      pixels[index + 0] = x;\n      pixels[index + 1] = random(255);\n      pixels[index + 2] = y;\n      pixels[index + 3] = 255;\n    }\n  }\n  updatePixels();\n}\n\nlet video;\nlet vScale = 16;\n\nfunction setup_bright() {\n  video = createCapture(VIDEO);\n  video.size(width / vScale, height / vScale);\n}\n\nfunction draw_bright() {\n  // background(51);\n  video.loadPixels();\n\n  let w1 = 0;\n  let w2 = video.width;\n\n  fill(51);\n  rectMode(CORNER);\n  rect(w1 * vScale, 0, w2 * vScale, height);\n\n  for (let y = 0; y < video.height; y++) {\n    for (let x = w1; x < w2; x++) {\n      let index = (video.width - x + 1 + y * video.width) * 4;\n      // console.log('rgb', r, g, b)\n      let r = video.pixels[index + 0];\n      let g = video.pixels[index + 1];\n      let b = video.pixels[index + 2];\n      let bright = (r + g + b) / 3;\n      let w = map(bright, 0, 255, 0, vScale);\n      noStroke();\n      fill(255);\n      rectMode(CENTER);\n      rect(x * vScale, y * vScale, w, w);\n    }\n  }\n}\n\n// https://editor.p5js.org/jht9629-gmail/sketches/4p4LPWvat\n// pixel combo Next TIme frameCount\n\n// https://editor.p5js.org/jht9629-gmail/sketches/b9tLAOHqq\n// pixel combo v3\n// Next drawing\n\n// https://editor.p5js.org/jht9629-gmail/sketches/xvdjaQIhM\n// pixel combo v2\n// effects in bands\n\n// https://editor.p5js.org/jht9629-gmail/sketches/_BoYAq-PI\n// pixel combo\n\n// https://editor.p5js.org/jht9629-nyu/sketches/1DfZ5dRU1\n\n// https://editor.p5js.org/jht9629-nyu/sketches/a0HDzoroq\n\n// https://editor.p5js.org/jht9629-nyu/sketches/sd8fP5xtL\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "6548e87d7ce63b85ac8c263b",
+        "isSelectedFile": true,
+        "createdAt": "2023-11-06T13:27:10.542Z",
+        "updatedAt": "2023-11-06T13:27:10.542Z",
+        "id": "6548e87d7ce63b85ac8c263b"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.8.0/p5.js\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.8.0/addons/p5.sound.min.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n    <meta charset=\"utf-8\" />\n\n  </head>\n  <body>\n    <main>\n    </main>\n    <script src=\"paint.js\"></script>\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "6548e87d7ce63b85ac8c2639",
+        "isSelectedFile": false,
+        "createdAt": "2023-11-06T13:27:10.542Z",
+        "updatedAt": "2023-11-06T13:27:10.542Z",
+        "id": "6548e87d7ce63b85ac8c2639"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "6548e87d7ce63b85ac8c263c",
+        "isSelectedFile": false,
+        "createdAt": "2023-11-06T13:27:10.542Z",
+        "updatedAt": "2023-11-06T13:27:10.542Z",
+        "id": "6548e87d7ce63b85ac8c263c"
+      },
+      {
+        "name": "paint.js",
+        "content": "let particles = [];\nlet slider;\n\nfunction setup_paint() {\n  for (var i = 0; i < 200; i++) {\n    particles[i] = new Particle(random(width), random(height));\n  }\n  slider = createSlider(0, 255, 20);\n  background(0);\n}\n\nfunction draw_paint() {\n  if (! video.loadedmetadata) return;\n  video.loadPixels();\n  for (let i = 0; i < particles.length; i++) {\n    particles[i].update();\n    particles[i].show();\n  }\n}\n\nclass Particle {\n  constructor(x, y) {\n    this.x = x;\n    this.y = y;\n    this.r = random(4, 32);\n    this.w1 = width / 3;\n    this.w2 = this.w1 * 2;\n    this.w3 = this.w1 * 3;\n    this.xstart = 0;\n    this.xend = width;\n  }\n\n  run() {\n    update();\n    show();\n  }\n  \n  update() {\n    this.x += random(-10, 10);\n    this.y += random(-10, 10);\n\n    this.x = constrain(this.x, this.xstart, this.xend);\n    this.y = constrain(this.y, 0, height);\n  }\n\n  show() {\n    noStroke();\n    let px = floor(this.x / vScale);\n    let py = floor(this.y / vScale);\n    let col = video.get(px, py);\n    //console.log(col);\n    fill(col[0], col[1], col[2], slider.value());\n    ellipse(this.x, this.y, this.r, this.r);\n  }\n}\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "6548e87d7ce63b85ac8c263a",
+        "isSelectedFile": false,
+        "updatedAt": "2023-11-06T13:27:10.542Z",
+        "createdAt": "2023-11-06T13:27:10.542Z",
+        "id": "6548e87d7ce63b85ac8c263a"
+      }
+    ],
+    "createdAt": "2023-11-06T13:22:05.310Z",
+    "updatedAt": "2023-11-06T13:27:10.542Z",
+    "id": "PPU_1IFRa"
+  },
+  {
+    "name": "pixel combo Next TIme millis aDelays",
+    "_id": "tI8IX029X",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "65490f2dd0446dc12db9033a",
+          "65490f2dd0446dc12db9033b",
+          "65490f2dd0446dc12db9033c",
+          "65490f2dd0446dc12db9033d"
+        ],
+        "fileType": "folder",
+        "_id": "65490f2dd0446dc12db90339",
+        "isSelectedFile": false,
+        "createdAt": "2023-11-06T16:12:38.673Z",
+        "updatedAt": "2023-11-06T16:12:38.673Z",
+        "id": "65490f2dd0446dc12db90339"
+      },
+      {
+        "name": "sketch.js",
+        "content": "// https://editor.p5js.org/jht9629-gmail/sketches/tI8IX029X\n// pixel combo Next TIme millis aDelays\n\nlet drawers = [\n  draw_random, //\n  draw_paint,\n  draw_bright,\n  draw_paint,\n];\nlet drawers_index = 0;\nlet aRun = true;\nlet aNextSecs = 0;\nlet aDelay = 5.0;\n// let aDelays = [0.5, 1, 0.5, 1, 0.5, 4, 0.5, 4];\nlet aDelays = [1, 2, 3, 4];\nlet aDelayIndex = 0;\n\nfunction setup() {\n  createCanvas(320, 240);\n  pixelDensity(1);\n\n  setup_bright();\n  setup_paint();\n\n  createButton(\"Next\").mousePressed(next_action);\n\n  // checkbox time based running\n  createCheckbox('Run', aRun).changed(function() {\n    aRun = this.checked();\n  });\n  \n  aNextSecs = millis() / 1000.0 + aDelays[0];\n}\n\nfunction draw() {\n  let func = drawers[drawers_index];\n  func();\n  // if (aRun && frameCount % 60 == 0) {\n  //   next_action()\n  // }\n  let now = millis() / 1000.0\n  if (aRun && now > aNextSecs) {\n    aDelayIndex = (aDelayIndex + 1) % aDelays.length;\n    aDelay = aDelays[aDelayIndex]\n    aNextSecs = now + aDelay;\n    next_action();\n  }\n}\n\nfunction next_action() {\n  drawers_index = (drawers_index + 1) % drawers.length;\n}\n\nfunction draw_random() {\n  background(51);\n\n  // let w1 = int(width / 3);\n  // let w2 = int(w1 * 2);\n\n  loadPixels();\n  for (let y = 0; y < height; y++) {\n    for (let x = 0; x < width; x++) {\n      let index = (x + y * width) * 4;\n      pixels[index + 0] = x;\n      pixels[index + 1] = random(255);\n      pixels[index + 2] = y;\n      pixels[index + 3] = 255;\n    }\n  }\n  updatePixels();\n}\n\nlet video;\nlet vScale = 16;\n\nfunction setup_bright() {\n  video = createCapture(VIDEO);\n  video.size(width / vScale, height / vScale);\n}\n\nfunction draw_bright() {\n  // background(51);\n  video.loadPixels();\n\n  let w1 = 0;\n  let w2 = video.width;\n\n  fill(51);\n  rectMode(CORNER);\n  rect(w1 * vScale, 0, w2 * vScale, height);\n\n  for (let y = 0; y < video.height; y++) {\n    for (let x = w1; x < w2; x++) {\n      let index = (video.width - x + 1 + y * video.width) * 4;\n      // console.log('rgb', r, g, b)\n      let r = video.pixels[index + 0];\n      let g = video.pixels[index + 1];\n      let b = video.pixels[index + 2];\n      let bright = (r + g + b) / 3;\n      let w = map(bright, 0, 255, 0, vScale);\n      noStroke();\n      fill(255);\n      rectMode(CENTER);\n      rect(x * vScale, y * vScale, w, w);\n    }\n  }\n}\n\n// https://editor.p5js.org/jht9629-gmail/sketches/PPU_1IFRa\n// pixel combo Next TIme millis \n\n// https://editor.p5js.org/jht9629-gmail/sketches/4p4LPWvat\n// pixel combo Next TIme frameCount\n\n// https://editor.p5js.org/jht9629-gmail/sketches/b9tLAOHqq\n// pixel combo v3\n// Next drawing\n\n// https://editor.p5js.org/jht9629-gmail/sketches/xvdjaQIhM\n// pixel combo v2\n// effects in bands\n\n// https://editor.p5js.org/jht9629-gmail/sketches/_BoYAq-PI\n// pixel combo\n\n// https://editor.p5js.org/jht9629-nyu/sketches/1DfZ5dRU1\n\n// https://editor.p5js.org/jht9629-nyu/sketches/a0HDzoroq\n\n// https://editor.p5js.org/jht9629-nyu/sketches/sd8fP5xtL\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "65490f2dd0446dc12db9033c",
+        "isSelectedFile": true,
+        "createdAt": "2023-11-06T16:12:38.673Z",
+        "updatedAt": "2023-11-06T16:12:38.673Z",
+        "id": "65490f2dd0446dc12db9033c"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.8.0/p5.js\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.8.0/addons/p5.sound.min.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n    <meta charset=\"utf-8\" />\n\n  </head>\n  <body>\n    <main>\n    </main>\n    <script src=\"paint.js\"></script>\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "65490f2dd0446dc12db9033a",
+        "isSelectedFile": false,
+        "createdAt": "2023-11-06T16:12:38.673Z",
+        "updatedAt": "2023-11-06T16:12:38.673Z",
+        "id": "65490f2dd0446dc12db9033a"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "65490f2dd0446dc12db9033d",
+        "isSelectedFile": false,
+        "createdAt": "2023-11-06T16:12:38.673Z",
+        "updatedAt": "2023-11-06T16:12:38.673Z",
+        "id": "65490f2dd0446dc12db9033d"
+      },
+      {
+        "name": "paint.js",
+        "content": "let particles = [];\nlet slider;\n\nfunction setup_paint() {\n  for (var i = 0; i < 200; i++) {\n    particles[i] = new Particle(random(width), random(height));\n  }\n  slider = createSlider(0, 255, 20);\n  background(0);\n}\n\nfunction draw_paint() {\n  if (! video.loadedmetadata) return;\n  video.loadPixels();\n  for (let i = 0; i < particles.length; i++) {\n    particles[i].update();\n    particles[i].show();\n  }\n}\n\nclass Particle {\n  constructor(x, y) {\n    this.x = x;\n    this.y = y;\n    this.r = random(4, 32);\n    this.w1 = width / 3;\n    this.w2 = this.w1 * 2;\n    this.w3 = this.w1 * 3;\n    this.xstart = 0;\n    this.xend = width;\n  }\n\n  run() {\n    update();\n    show();\n  }\n  \n  update() {\n    this.x += random(-10, 10);\n    this.y += random(-10, 10);\n\n    this.x = constrain(this.x, this.xstart, this.xend);\n    this.y = constrain(this.y, 0, height);\n  }\n\n  show() {\n    noStroke();\n    let px = floor(this.x / vScale);\n    let py = floor(this.y / vScale);\n    let col = video.get(px, py);\n    //console.log(col);\n    fill(col[0], col[1], col[2], slider.value());\n    ellipse(this.x, this.y, this.r, this.r);\n  }\n}\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "65490f2dd0446dc12db9033b",
+        "isSelectedFile": false,
+        "updatedAt": "2023-11-06T16:12:38.673Z",
+        "createdAt": "2023-11-06T16:12:38.673Z",
+        "id": "65490f2dd0446dc12db9033b"
+      }
+    ],
+    "createdAt": "2023-11-06T16:07:09.361Z",
+    "updatedAt": "2023-11-06T16:12:38.673Z",
+    "id": "tI8IX029X"
+  },
+  {
+    "name": "soundFile",
+    "_id": "8sM93vD0n",
+    "updatedAt": "2023-10-27T21:57:21.064Z",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "653c2eaf10e693f991499f92",
+          "653c2eaf10e693f991499f91",
+          "653c2eaf10e693f991499f93"
+        ],
+        "fileType": "folder",
+        "_id": "653c2eaf10e693f991499f94",
+        "createdAt": "2023-10-27T21:57:21.064Z",
+        "updatedAt": "2023-10-27T21:57:21.064Z",
+        "isSelectedFile": false,
+        "id": "653c2eaf10e693f991499f94"
+      },
+      {
+        "name": "sketch.js",
+        "content": "// https://editor.p5js.org/jht9629-gmail/sketches/8sM93vD0n\n// soundFile\n\nlet mic, recorder, soundFile;\n\nlet state = 0; // mousePress will increment from Record, to Stop, to Play\n\nfunction setup() {\n  createCanvas(400, 400);\n  background(200);\n  textSize(30)\n  fill(0);\n  text('Enable mic and click the mouse to begin recording', 20, 20);\n\n  // create an audio in\n  mic = new p5.AudioIn();\n\n  // users must manually enable their browser microphone for recording to work properly!\n  mic.start();\n\n  // create a sound recorder\n  recorder = new p5.SoundRecorder();\n\n  // connect the mic to the recorder\n  recorder.setInput(mic);\n\n  // create an empty sound file that we will use to playback the recording\n  soundFile = new p5.SoundFile();\n  \n}\n\nfunction mousePressed() {\n  // use the '.enabled' boolean to make sure user enabled the mic (otherwise we'd record silence)\n  if (state === 0 && mic.enabled) {\n    // Tell recorder to record to a p5.SoundFile which we will use for playback\n    recorder.record(soundFile);\n\n    background(255, 0, 0);\n    text('Recording now! Click to stop.', 20, 20);\n    state++;\n  } else if (state === 1) {\n    recorder.stop(); // stop recorder, and send the result to soundFile\n\n    background(0, 255, 0);\n    text('Recording stopped. Click to play & save', 20, 20);\n    state++;\n  } else if (state === 2) {\n    soundFile.play(); // play the result!\n    // saveSound(soundFile, 'mySound.wav'); // save file\n    soundBlob = soundFile.getBlob();\n    state = 0;\n  }\n}\n\nlet soundBlob;\n\n// https://p5js.org/examples/sound-record-save-audio.html\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "653c2eaf10e693f991499f91",
+        "isSelectedFile": true,
+        "createdAt": "2023-10-27T21:57:21.064Z",
+        "updatedAt": "2023-10-27T21:57:21.064Z",
+        "id": "653c2eaf10e693f991499f91"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.8.0/p5.js\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.8.0/addons/p5.sound.min.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n    <meta charset=\"utf-8\" />\n\n  </head>\n  <body>\n    <main>\n    </main>\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "653c2eaf10e693f991499f92",
+        "createdAt": "2023-10-27T21:57:21.064Z",
+        "updatedAt": "2023-10-27T21:57:21.064Z",
+        "isSelectedFile": false,
+        "id": "653c2eaf10e693f991499f92"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "653c2eaf10e693f991499f93",
+        "createdAt": "2023-10-27T21:57:21.064Z",
+        "updatedAt": "2023-10-27T21:57:21.064Z",
+        "isSelectedFile": false,
+        "id": "653c2eaf10e693f991499f93"
+      }
+    ],
+    "createdAt": "2023-10-27T21:42:12.980Z",
+    "id": "8sM93vD0n"
+  },
+  {
+    "name": "spiral walk",
+    "_id": "zaAsh0DZt",
+    "updatedAt": "2023-04-11T18:38:52.749Z",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "643580c4a1ba3e31f18a28d1",
+          "643580c4a1ba3e31f18a28d0",
+          "643580c4a1ba3e31f18a28d2"
+        ],
+        "fileType": "folder",
+        "_id": "643580c4a1ba3e31f18a28d3",
+        "createdAt": "2023-04-11T18:38:52.749Z",
+        "updatedAt": "2023-04-11T18:38:52.749Z",
+        "id": "643580c4a1ba3e31f18a28d3"
+      },
+      {
+        "name": "sketch.js",
+        "content": "// https://editor.p5js.org/jht9629-gmail/sketches/zaAsh0DZt\n// spiral walk - create a spiral from the center of the canvas\n\n// my state consolidate here to ease possible tranition to Class object\nlet my = { width: 400, height: 400, d: 10 };\n\nfunction setup() {\n  createCanvas(my.width, my.height);\n\n  // start with single pixel box in the center of the canvas\n  // Left Top Right Bottom\n  my.L = int(my.width / 2);\n  my.T = int(my.height / 2);\n  my.R = my.L;\n  my.B = my.T;\n  my.px = my.L;\n  my.py = my.T;\n\n  let nw = int(my.width / my.d)\n  let nh = int(my.height / my.d);\n  let n = nw * nh\n  console.log('nw', nw, 'mh', nh, 'n', n);\n\n  grow_box();\n  // grow_box();\n\n  background(220);\n\n  my.pts = [];\n  let d = my.d;\n  let more = 1;\n\n  while (more) {\n    // move up out of box\n    my.nx = my.px;\n    my.ny = my.py - d;\n    my_line({ dx: 0, dy: 0 });\n\n    // move right\n    my.nx = my.px + d;\n    while (my.nx < my.R) {\n      my_line({ dx: d, dy: 0 });\n    }\n    my.nx -= d;\n\n    // move down\n    my.ny += d;\n    while (my.ny < my.B) {\n      my_line({ dx: 0, dy: d });\n    }\n    my.ny -= d;\n\n    // move left\n    my.nx = my.px - d;\n    while (my.nx > my.L) {\n      my_line({ dx: -d, dy: 0 });\n    }\n    my.nx += d;\n\n    // move up\n    my.ny -= d;\n    while (my.ny > my.T) {\n      my_line({ dx: 0, dy: -d });\n    }\n    my.ny += d;\n\n    grow_box();\n\n    more = my.px > 0 && my.px < my.width && my.py > 0 && my.py < my.height;\n  }\n  // console.log(my.pts)\n  console.log('my.pts.length', my.pts.length);\n}\n\nfunction my_line({ dx, dy }) {\n  my.pts.push([my.px, my.py]);\n  line(my.nx, my.ny, my.px, my.py);\n  my.px = my.nx;\n  my.py = my.ny;\n  my.nx += dx;\n  my.ny += dy;\n}\n\nfunction grow_box() {\n  my.L -= my.d;\n  my.R += my.d;\n  my.T -= my.d;\n  my.B += my.d;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "643580c4a1ba3e31f18a28d0",
+        "isSelectedFile": true,
+        "createdAt": "2023-04-11T18:38:52.749Z",
+        "updatedAt": "2023-04-11T18:38:52.749Z",
+        "id": "643580c4a1ba3e31f18a28d0"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/addons/p5.sound.min.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n    <meta charset=\"utf-8\" />\n\n  </head>\n  <body>\n    <main>\n    </main>\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "643580c4a1ba3e31f18a28d1",
+        "createdAt": "2023-04-11T18:38:52.749Z",
+        "updatedAt": "2023-04-11T18:38:52.749Z",
+        "id": "643580c4a1ba3e31f18a28d1"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "643580c4a1ba3e31f18a28d2",
+        "createdAt": "2023-04-11T18:38:52.749Z",
+        "updatedAt": "2023-04-11T18:38:52.749Z",
+        "id": "643580c4a1ba3e31f18a28d2"
+      }
+    ],
+    "createdAt": "2023-04-11T15:49:45.524Z",
+    "id": "zaAsh0DZt"
+  },
+  {
+    "name": "three columns hover v1",
+    "_id": "hLi5Fdtxo",
+    "updatedAt": "2023-10-16T16:37:39.148Z",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "652c5f43d2a6ef0f8aa6c588",
+          "652c5f43d2a6ef0f8aa6c587",
+          "652c5f43d2a6ef0f8aa6c589"
+        ],
+        "fileType": "folder",
+        "_id": "652c5f43d2a6ef0f8aa6c58a",
+        "createdAt": "2023-10-16T16:37:39.148Z",
+        "updatedAt": "2023-10-16T16:37:39.148Z",
+        "id": "652c5f43d2a6ef0f8aa6c58a"
+      },
+      {
+        "name": "sketch.js",
+        "content": "// https://editor.p5js.org/jht9629-gmail/sketches/hLi5Fdtxo\n// three columns hover v1\n// hover over three colums to see red\n\nlet aw;\n\nfunction setup() {\n  createCanvas(400, 400);\n  aw = width / 3;\n}\n\nfunction draw() {\n  background(255);\n  \n  let mx = mouseX;\n  \n  fill('red');\n  if (mx > 0 && mx < aw) {\n    rect(0,0,aw,height)\n  }\n  if (mx > aw && mx < aw * 2) {\n    rect(aw,0,aw,height)\n  }\n  if (mx > aw*2 && mx < aw*3) {\n    rect(aw*2,0,aw,height)\n  }\n}",
+        "children": [],
+        "fileType": "file",
+        "_id": "652c5f43d2a6ef0f8aa6c587",
+        "isSelectedFile": true,
+        "createdAt": "2023-10-16T16:37:39.148Z",
+        "updatedAt": "2023-10-16T16:37:39.148Z",
+        "id": "652c5f43d2a6ef0f8aa6c587"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.js\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/addons/p5.sound.min.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n    <meta charset=\"utf-8\" />\n\n  </head>\n  <body>\n    <main>\n    </main>\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "652c5f43d2a6ef0f8aa6c588",
+        "createdAt": "2023-10-16T16:37:39.148Z",
+        "updatedAt": "2023-10-16T16:37:39.148Z",
+        "id": "652c5f43d2a6ef0f8aa6c588"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "652c5f43d2a6ef0f8aa6c589",
+        "createdAt": "2023-10-16T16:37:39.148Z",
+        "updatedAt": "2023-10-16T16:37:39.148Z",
+        "id": "652c5f43d2a6ef0f8aa6c589"
+      }
+    ],
+    "createdAt": "2023-10-15T21:53:21.775Z",
+    "id": "hLi5Fdtxo"
+  },
+  {
+    "name": "three columns hover v2",
+    "_id": "-cX-O-25n",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "652c611fd2a6ef0f8aa6c58c",
+          "652c611fd2a6ef0f8aa6c58d",
+          "652c611fd2a6ef0f8aa6c58e"
+        ],
+        "fileType": "folder",
+        "_id": "652c611fd2a6ef0f8aa6c58b",
+        "createdAt": "2023-10-16T16:40:11.293Z",
+        "updatedAt": "2023-10-16T16:40:11.293Z",
+        "isSelectedFile": false,
+        "id": "652c611fd2a6ef0f8aa6c58b"
+      },
+      {
+        "name": "sketch.js",
+        "content": "// https://editor.p5js.org/jht9629-gmail/sketches/-cX-O-25n\n// three columns hover v2\n\n// Change the behavior so that when you mouse over a column, you turn it red and it stays red until the next time you mouse over it again, at which point the column goes back to white. (Just get this working for one column.)\n\nlet aw;\nlet clr = 255;\nlet wasIn = false;\n\nfunction setup() {\n  createCanvas(400, 400);\n  aw = width / 3;\n}\n\nfunction draw() {\n  background(255);\n  \n  let isIn1 = mouseX > 0 && mouseX < aw\n  if (isIn1) {\n    if (wasIn) {\n      // still in first column\n    }\n    else {\n      // mouse moving into first colum\n      // flip color\n      clr = (clr == 'red') ? 255 : 'red'\n      // if (clr == 'red') clr = 255;\n      // else ckr = 'red'\n    }\n    // rect(0,0,aw,height)\n  }\n  wasIn = isIn1;\n  \n  fill(clr);\n  rect(0,0,aw,height)\n\n  // Lets not get distracted by other columns\n  // if (mx > aw && mx < aw * 2) {\n  //   rect(aw,0,aw,height)\n  // }\n  // if (mx > aw*2 && mx < aw*3) {\n  //   rect(aw*2,0,aw,height)\n  // }\n}\n\n// https://editor.p5js.org/jht9629-gmail/sketches/hLi5Fdtxo\n// three columns hover v1\n\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "652c611fd2a6ef0f8aa6c58d",
+        "isSelectedFile": true,
+        "createdAt": "2023-10-16T16:40:11.293Z",
+        "updatedAt": "2023-10-16T16:40:11.293Z",
+        "id": "652c611fd2a6ef0f8aa6c58d"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.js\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/addons/p5.sound.min.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n    <meta charset=\"utf-8\" />\n\n  </head>\n  <body>\n    <main>\n    </main>\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "652c611fd2a6ef0f8aa6c58c",
+        "createdAt": "2023-10-16T16:40:11.293Z",
+        "updatedAt": "2023-10-16T16:40:11.293Z",
+        "isSelectedFile": false,
+        "id": "652c611fd2a6ef0f8aa6c58c"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "652c611fd2a6ef0f8aa6c58e",
+        "createdAt": "2023-10-16T16:40:11.293Z",
+        "updatedAt": "2023-10-16T16:40:11.293Z",
+        "isSelectedFile": false,
+        "id": "652c611fd2a6ef0f8aa6c58e"
+      }
+    ],
+    "createdAt": "2023-10-15T22:01:03.077Z",
+    "updatedAt": "2023-10-16T16:40:11.293Z",
+    "id": "-cX-O-25n"
+  },
+  {
+    "name": "truchet tiles array",
+    "_id": "EfQDCJ5aR",
+    "updatedAt": "2023-03-19T19:12:51.287Z",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "64162e592204b8259694336d",
+          "64162e592204b8259694336c",
+          "64162e592204b8259694336e"
+        ],
+        "fileType": "folder",
+        "_id": "64162e592204b8259694336f",
+        "createdAt": "2023-03-19T19:12:51.287Z",
+        "updatedAt": "2023-03-19T19:12:51.287Z",
+        "id": "64162e592204b8259694336f"
+      },
+      {
+        "name": "sketch.js",
+        "content": "// https://editor.p5js.org/jht9629-gmail/sketches/EfQDCJ5aR\n// truchet tiles array\n\nlet a_len = 40;\nlet a_angle = 0;\nlet a_arr = [];\n\nfunction setup() {\n  createCanvas(400, 400);\n  angleMode(DEGREES);\n  noFill();\n  strokeWeight(4);\n  for (let x = 0; x < width; x += a_len) {\n    for (let y = 0; y < height; y += a_len) {\n      let odd = random() > 0.5\n      a_arr.push(odd)\n    }\n  }\n}\n\nlet half;\n\nfunction draw() {\n  half = a_len / 2;\n  background(220);\n  let odd = false;\n  let index = 0\n  for (let x = 0; x < width; x += a_len) {\n    for (let y = 0; y < height; y += a_len) {\n      let odd = a_arr[index]\n      if (odd) {\n        drawLeft(x, y);\n      } else {\n        drawRight(x, y);\n      }\n      index++;\n      // odd = ! odd;\n    }\n    // odd = ! odd;\n  }\n  if (a_angle < 360) {\n    a_angle += 1;\n  }\n}\n\nfunction drawLeft(x, y) {\n  push();\n  translate(x + half, y + half);\n  rotate(a_angle);\n  arc(-half + 0, -half + 0, a_len, a_len, 0, 90);\n  arc(-half + a_len, -half + a_len, a_len, a_len, 180, 270);\n  pop();\n}\n\nfunction drawRight(x, y) {\n  push();\n  noFill();\n  translate(x + half, y + half);\n  rotate(a_angle);\n  arc(-half + a_len, -half + 0, a_len, a_len, 90, 180);\n  arc(-half + 0, -half + a_len, a_len, a_len, 270, 360);\n  pop();\n}\n\n// https://editor.p5js.org/jht9629-nyu/sketches/5TSs5XB6o\n// truchet tiles rotate\n\n// https://editor.p5js.org/jht9629-nyu/sketches/1CpIVSqp_d\n// truchet tiles re-factored\n\n// https://editor.p5js.org/jht9629-nyu/sketches/lBrb1cBQ7\n// truchet tiles copy\n\n// https://editor.p5js.org/ambikajo/sketches/cKu3Gn0Po\n// truchet tiles by ambikajo\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "64162e592204b8259694336c",
+        "isSelectedFile": true,
+        "createdAt": "2023-03-19T19:12:51.287Z",
+        "updatedAt": "2023-03-19T19:12:51.287Z",
+        "id": "64162e592204b8259694336c"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/addons/p5.sound.min.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n    <meta charset=\"utf-8\" />\n\n  </head>\n  <body>\n    <main>\n    </main>\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "64162e592204b8259694336d",
+        "createdAt": "2023-03-19T19:12:51.287Z",
+        "updatedAt": "2023-03-19T19:12:51.287Z",
+        "id": "64162e592204b8259694336d"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "64162e592204b8259694336e",
+        "createdAt": "2023-03-19T19:12:51.287Z",
+        "updatedAt": "2023-03-19T19:12:51.287Z",
+        "id": "64162e592204b8259694336e"
+      }
+    ],
+    "createdAt": "2023-03-18T21:34:32.255Z",
+    "id": "EfQDCJ5aR"
+  },
+  {
+    "name": "truchet tiles pause",
+    "_id": "LnPplI2CR",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "641638c42204b82596943375",
+          "641638c42204b82596943376",
+          "641638c42204b82596943377"
+        ],
+        "fileType": "folder",
+        "_id": "641638c42204b82596943374",
+        "createdAt": "2023-03-19T17:25:05.354Z",
+        "updatedAt": "2023-03-19T17:25:05.354Z",
+        "isSelectedFile": false,
+        "id": "641638c42204b82596943374"
+      },
+      {
+        "name": "sketch.js",
+        "content": "// https://editor.p5js.org/jht9629-gmail/sketches/LnPplI2CR\n// truchet tiles pause\n\nlet len = 40;\nlet a_angle = 0;\nlet a_arr = [];\n// {count: seconds,...}\nlet a_pause_dict = {0: 2.0, 90: 2.0, 180: 2.0, 270: 2.0}\nlet a_pause_start = -1;\nlet a_pause_lapse;\n\nfunction setup() {\n  createCanvas(400, 400);\n  angleMode(DEGREES);\n  noFill();\n  strokeWeight(4);\n  // Fill array a_arr with random true/false values\n  for (let x = 0; x < width; x += len) {\n    for (let y = 0; y < height; y += len) {\n      let odd = random() > 0.5\n      a_arr.push(odd)\n    }\n  }\n}\n\nfunction draw() {\n  let half = len / 2;\n  background(220);\n  let index = 0\n  for (let x = 0; x < width; x += len) {\n    for (let y = 0; y < height; y += len) {\n      let odd = a_arr[index]\n      if (odd) {\n        drawLeft(x, y, half);\n      } else {\n        drawRight(x, y, half);\n      }\n      index++;\n    }\n  }\n  if (check_cycle()) {\n    a_angle = (a_angle + 1) % 360;\n  }\n}\n\n// return true to advance cycle\n// use a_angle to find seconds to pause in a_pause_dict\nfunction check_cycle() {\n  if (a_pause_start > 0) {\n    let now = millis(); \n    if (now - a_pause_start > a_pause_lapse) {\n      a_pause_start = 0;\n      return true;\n    }\n    else {\n      return false\n    }\n  }\n  let lapse = a_pause_dict[a_angle];\n  if (lapse) {\n    a_pause_start = millis();\n    a_pause_lapse = lapse * 1000;\n    return false\n  }\n  else {  \n    return true; \n  }\n}\n\nfunction drawLeft(x, y, half) {\n  push();\n  translate(x + half, y + half);\n  rotate(a_angle);\n  arc(-half + 0, -half + 0, len, len, 0, 90);\n  arc(-half + len, -half + len, len, len, 180, 270);\n  pop();\n}\n\nfunction drawRight(x, y, half) {\n  push();\n  noFill();\n  translate(x + half, y + half);\n  rotate(a_angle);\n  arc(-half + len, -half + 0, len, len, 90, 180);\n  arc(-half + 0, -half + len, len, len, 270, 360);\n  pop();\n}\n\n// https://editor.p5js.org/jht9629-gmail/sketches/EfQDCJ5aR\n// truchet tiles array\n\n// https://editor.p5js.org/jht9629-nyu/sketches/5TSs5XB6o\n// truchet tiles rotate\n\n// https://editor.p5js.org/jht9629-nyu/sketches/1CpIVSqp_d\n// truchet tiles re-factored\n\n// https://editor.p5js.org/jht9629-nyu/sketches/lBrb1cBQ7\n// truchet tiles copy\n\n// https://editor.p5js.org/ambikajo/sketches/cKu3Gn0Po\n// truchet tiles by ambikajo\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "641638c42204b82596943376",
+        "isSelectedFile": true,
+        "createdAt": "2023-03-19T17:25:05.354Z",
+        "updatedAt": "2023-03-19T17:25:05.354Z",
+        "id": "641638c42204b82596943376"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/addons/p5.sound.min.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n    <meta charset=\"utf-8\" />\n\n  </head>\n  <body>\n    <main>\n    </main>\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "641638c42204b82596943375",
+        "createdAt": "2023-03-19T17:25:05.354Z",
+        "updatedAt": "2023-03-19T17:25:05.354Z",
+        "isSelectedFile": false,
+        "id": "641638c42204b82596943375"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "641638c42204b82596943377",
+        "createdAt": "2023-03-19T17:25:05.354Z",
+        "updatedAt": "2023-03-19T17:25:05.354Z",
+        "isSelectedFile": false,
+        "id": "641638c42204b82596943377"
+      }
+    ],
+    "createdAt": "2023-03-18T22:18:45.410Z",
+    "updatedAt": "2023-03-19T17:25:05.354Z",
+    "id": "LnPplI2CR"
+  },
+  {
+    "name": "truchet tiles rotate",
+    "_id": "mxUEvOhbk",
+    "updatedAt": "2023-03-19T19:12:13.563Z",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "64162e922204b82596943371",
+          "64162e922204b82596943370",
+          "64162e922204b82596943372"
+        ],
+        "fileType": "folder",
+        "_id": "64162e922204b82596943373",
+        "createdAt": "2023-03-19T19:12:13.563Z",
+        "updatedAt": "2023-03-19T19:12:13.563Z",
+        "id": "64162e922204b82596943373"
+      },
+      {
+        "name": "sketch.js",
+        "content": "// https://editor.p5js.org/jht9629-gmail/sketches/mxUEvOhbk\n// truchet tiles rotate\n\nlet a_len = 40;\nlet a_angle = 0;\n\nfunction setup() {\n  createCanvas(400, 400);\n  angleMode(DEGREES);\n  // noLoop();\n  noFill();\n  strokeWeight(4)\n}\n\nfunction draw() {\n  background(220);\n  let half = a_len/2\n  let odd = false\n  for (let x = 0; x < width; x += a_len) {\n    for (let y = 0; y < height; y += a_len) {\n      // if (random() > 0.5) {\n      if (odd) {\n        drawLeft(x,y,half)\n      }\n      else {\n        drawRight(x,y,half)\n      }\n      // odd = ! odd;\n    }\n    // odd = ! odd;\n  }\n  a_angle += 1;\n}\n\nfunction drawLeft(x, y, half) {\n  push();\n  translate(x+half, y+half);\n  rotate(a_angle)\n  arc(-half+0, -half+0, a_len, a_len, 0, 90);\n  arc(-half+a_len, -half+a_len, a_len, a_len, 180, 270);\n  pop();\n}\n\nfunction drawRight(x, y, half) {\n  push();\n  noFill();\n  translate(x+half, y+half);\n  rotate(a_angle)\n  arc(-half+a_len, -half+0, a_len, a_len, 90, 180);\n  arc(-half+0, -half+a_len, a_len, a_len, 270, 360);\n  pop();\n}\n\n// https://editor.p5js.org/jht9629-nyu/sketches/1CpIVSqp_d\n// truchet tiles re-factored\n\n// https://editor.p5js.org/jht9629-nyu/sketches/lBrb1cBQ7\n// truchet tiles copy\n\n// https://editor.p5js.org/ambikajo/sketches/cKu3Gn0Po\n// truchet tiles by ambikajo\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "64162e922204b82596943370",
+        "isSelectedFile": true,
+        "createdAt": "2023-03-19T19:12:13.563Z",
+        "updatedAt": "2023-03-19T19:12:13.563Z",
+        "id": "64162e922204b82596943370"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/addons/p5.sound.min.js\"></script>\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\">\n    <meta charset=\"utf-8\" />\n\n  </head>\n  <body>\n    <main>\n    </main>\n    <script src=\"sketch.js\"></script>\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "64162e922204b82596943371",
+        "createdAt": "2023-03-19T19:12:13.563Z",
+        "updatedAt": "2023-03-19T19:12:13.563Z",
+        "id": "64162e922204b82596943371"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\ncanvas {\n  display: block;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "64162e922204b82596943372",
+        "createdAt": "2023-03-19T19:12:13.563Z",
+        "updatedAt": "2023-03-19T19:12:13.563Z",
+        "id": "64162e922204b82596943372"
+      }
+    ],
+    "createdAt": "2023-03-18T21:35:24.764Z",
+    "id": "mxUEvOhbk"
+  },
+  {
+    "name": "Youtube Player No API copy",
+    "_id": "eYD39ApZp",
+    "files": [
+      {
+        "name": "root",
+        "content": "",
+        "children": [
+          "642af6e522f054724e5741c9",
+          "642af6e522f054724e5741ca",
+          "642af6e522f054724e5741cb"
+        ],
+        "fileType": "folder",
+        "_id": "642af6e522f054724e5741c8",
+        "isSelectedFile": false,
+        "createdAt": "2023-08-02T11:06:42.063Z",
+        "updatedAt": "2023-08-02T11:06:42.063Z",
+        "id": "642af6e522f054724e5741c8"
+      },
+      {
+        "name": "sketch.js",
+        "content": "// https://editor.p5js.org/jht9629-gmail/sketches/eYD39ApZp\n// Youtube Player No API copy\n\n// https://editor.p5js.org/jsy360/sketches/HJLiO_s1f\n\nlet base_url = \"https://www.youtube.com/embed/psL_5RIBqnY?start=0\";\n// \"https://www.youtube.com/embed/psL_5RIBqnY?autoplay=1&start=153&end=160\";\nlet base_url1 = \"https://www.youtube.com/embed/5IrAg8plb1o\";\n// \"https://www.youtube.com/embed/5IrAg8plb1o?&start=142&end=152&autoplay=1\";\nvar player;\n\nfunction setup() {\n  createCanvas(200, 200);\n  background(0);\n  //createVideo(base_url);\n  player = select(\"#yt_video\");\n\n  player.attribute(\"src\", base_url);\n  player.position(0, 0);\n}\n\nfunction draw() {}\n\nfunction mousePressed() {\n  var iframes = document.querySelectorAll(\"iframe\");\n  //for (var i = 0; i < iframes.length; i++) {\n  iframes[0].parentNode.removeChild(iframes[0]);\n  //}\n  //got code here: https://stackoverflow.com/questions/15103552/remove-iframe-with-javascript\n  select(\"#yt_video2\").attribute(\"src\", base_url1);\n  select(\"#yt_video2\").position(0, 0);\n}\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "642af6e522f054724e5741ca",
+        "isSelectedFile": true,
+        "createdAt": "2023-08-02T11:06:42.063Z",
+        "updatedAt": "2023-08-02T11:06:42.063Z",
+        "id": "642af6e522f054724e5741ca"
+      },
+      {
+        "name": "index.html",
+        "content": "<!DOCTYPE html>\n<html>\n  <head>\n    <meta charset=\"utf-8\">\n    <title>test iframe</title>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.11/p5.min.js\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.11/addons/p5.dom.min.js\"></script>\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.11/addons/p5.sound.min.js\"></script>\n    <script src=\"sketch.js\"></script>\n  </head>\n  <body>\n    <h1> Test Iframe </h1>\n    <iframe id=\"yt_video\" width=\"560\" height=\"315\" frameborder=\"0\" ></iframe>\n    <iframe id=\"yt_video2\" width=\"560\" height=\"315\" frameborder=\"0\" ></iframe>\n  </body>\n</html>\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "642af6e522f054724e5741c9",
+        "isSelectedFile": false,
+        "createdAt": "2023-08-02T11:06:42.063Z",
+        "updatedAt": "2023-08-02T11:06:42.063Z",
+        "id": "642af6e522f054724e5741c9"
+      },
+      {
+        "name": "style.css",
+        "content": "html, body {\n  margin: 0;\n  padding: 0;\n}\n",
+        "children": [],
+        "fileType": "file",
+        "_id": "642af6e522f054724e5741cb",
+        "isSelectedFile": false,
+        "createdAt": "2023-08-02T11:06:42.063Z",
+        "updatedAt": "2023-08-02T11:06:42.063Z",
+        "id": "642af6e522f054724e5741cb"
+      }
+    ],
+    "createdAt": "2023-04-03T15:55:17.325Z",
+    "updatedAt": "2023-08-02T11:06:42.063Z",
+    "id": "eYD39ApZp"
+  }
+]

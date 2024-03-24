@@ -1,4 +1,4 @@
-# [p5mirror](https://github.com/molab-itp/p5mirror)
+# [p5mirror](https://github.com/jht9629-gmail/p5mirror-jht9629-gmail)
 
 ## How ? Quick start
 
@@ -13,6 +13,10 @@ open https://nodejs.org/en/download
 # run this bash script in the root of your repo
 
 bin/mirror.sh --user p5name
+
+bin/mirror.sh --user jht9629-gmail
+
+
 ```
 
 ## Why ?
