@@ -1,4 +1,4 @@
-# [p5mirror](https://github.com/jht9629-gmail/p5mirror-jht9629-gmail)
+# [p5mirror-jht9629-gmail](https://github.com/jht9629-gmail/p5mirror-jht9629-gmail)
 
 - [github pages p5projects-index](https://jht9629-gmail.github.io/p5mirror-jht9629-gmail/p5projects-index.html)
 
