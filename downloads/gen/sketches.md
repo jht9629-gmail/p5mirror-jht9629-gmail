@@ -1,11 +1,12 @@
 # Sketches for jht9629-gmail
-27 sketches  
+28 sketches  
 [3.5 circleX a\_len ui slider checkbox select copy](https://editor.p5js.org/jht9629-gmail/sketches/OCFOju6nO)<!-- 2023-10-23T18:01:56.326Z -->  
 [IMS - Truchet Vamoss copy](https://editor.p5js.org/jht9629-gmail/sketches/wDfyiYikE)<!-- 2023-03-20T01:18:57.007Z -->  
 [maze tiles bits](https://editor.p5js.org/jht9629-gmail/sketches/IagYeywkY)<!-- 2023-04-10T09:44:11.271Z -->  
 [maze tiles count](https://editor.p5js.org/jht9629-gmail/sketches/abgeEnTyf)<!-- 2023-04-10T03:08:31.880Z -->  
 [maze tiles pause](https://editor.p5js.org/jht9629-gmail/sketches/i2hCaC36l)<!-- 2023-04-10T02:46:36.765Z -->  
 [MazeSpin](https://editor.p5js.org/jht9629-gmail/sketches/-FuOH_EE4)<!-- 2023-08-02T17:52:59.005Z -->  
+[MazeSpin liberation screens](https://editor.p5js.org/jht9629-gmail/sketches/4pgECdEVG)<!-- 2024-03-28T00:18:41.416Z -->  
 [mo-storage-dashboard](https://editor.p5js.org/jht9629-gmail/sketches/VWbtyZTnx)<!-- 2023-12-18T18:18:18.739Z -->  
 [mouse ellipse](https://editor.p5js.org/jht9629-gmail/sketches/fiaNTD9Nj)<!-- 2023-08-02T17:45:45.430Z -->  
 [mouse rect](https://editor.p5js.org/jht9629-gmail/sketches/3IubAIXOX)<!-- 2023-08-02T17:31:37.428Z -->  
