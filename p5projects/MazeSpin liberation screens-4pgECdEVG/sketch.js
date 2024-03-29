@@ -6,8 +6,6 @@ let my = {};
 let mazeSpin;
 
 function setup() {
-  my.width = 300;
-  my.height = 300;
   my.ncells = 9;
   my.strokeWeight = 0.5;
   my.delta = 1;
@@ -17,7 +15,7 @@ function setup() {
   my.do_cycle = 2;
   my.do_report = 0;
   my.alpha = 255;
-  my.do_truchet = 1;
+  // my.do_truchet = 1;
 
   my.width = 400;
   my.height = 400;
