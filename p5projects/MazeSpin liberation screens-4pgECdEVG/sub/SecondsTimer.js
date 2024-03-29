@@ -1,4 +1,3 @@
-// export default 
 class SecondsTimer {
   // let timer = SecondsTimer(period)
   //    period

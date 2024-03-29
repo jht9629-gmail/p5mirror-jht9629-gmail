@@ -1,6 +1,5 @@
 // create points for a spiral from the center
 
-// export default 
 class SpiralWalker {
   //
   // { width: 600, height: 400, d: 10 }

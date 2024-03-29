@@ -16,6 +16,7 @@ function setup() {
   my.do_spiral = 1;
   my.do_cycle = 2;
   my.do_report = 0;
+  my.alpha = 255;
 
   my.width = 400;
   my.height = 400;
@@ -27,10 +28,9 @@ function setup() {
 
   // console.log("MazeSpin", MazeSpin);
   mazeSpin = new MazeSpin(my);
-  
-  fullScreenBtn = createButton("Full Screen").mousePressed(full_screen_action);
-  fullScreenBtn.style("font-size:42px");
 
+  fullScreenBtn = createButton('Full Screen').mousePressed(full_screen_action);
+  fullScreenBtn.style('font-size:42px');
 }
 
 function draw() {
@@ -60,7 +60,7 @@ function next_color() {
 
 let colorGold = [187, 165, 61];
 // let colorPalette = ["red", "green", colorGold, "black"];
-let colorPalette = ["red", "green", colorGold];
+let colorPalette = ['red', 'green', colorGold];
 
 function full_screen_action() {
   fullScreenBtn.remove();

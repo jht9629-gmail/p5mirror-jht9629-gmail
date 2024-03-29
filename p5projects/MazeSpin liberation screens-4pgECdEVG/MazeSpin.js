@@ -1,11 +1,12 @@
 // maze with rotating transition
 
-// import SpiralWalker from './sub/SpiralWalker.js';
-// import SecondsTimer from './sub/SecondsTimer.js';
-// import { report_1ofn, div_report } from './sub/report.js';
-// import { array_zero, array_add, array_random } from './sub/array.js';
+// https://editor.p5js.org/jht9629-gmail/sketches/-FuOH_EE4
 
-// export default 
+// import SpiralWalker from './sub/SpiralWalker.js?v={{vers}}';
+// import SecondsTimer from './sub/SecondsTimer.js?v={{vers}}';
+// import { report_1ofn, div_report } from './sub/report.js?v={{vers}}';
+// import { array_zero, array_add, array_random } from './sub/array.js?v={{vers}}';
+
 class MazeSpin {
   // this.ncells
   // this.width = this.width
@@ -16,6 +17,7 @@ class MazeSpin {
   // this.pause_period = 1.0; // 0.5;
   // this.do_cycle = 0;
   // this.do_spiral
+  // this.alpha
   constructor(props) {
     // console.log('MazeSpin props', props);
     Object.assign(this, props);
@@ -37,17 +39,18 @@ class MazeSpin {
     this.output.strokeWeight(this.d * this.strokeWeight);
 
     let n = this.do_spiral ? this.make_spiral_pts() : this.make_grid_pts();
-
     array_zero(this.now, n);
     array_zero(this.next, n);
     array_zero(this.random, n);
-
     array_add(this.next, this.delta);
-
     this.target = this.next;
 
     this.timer = new SecondsTimer();
     this.timer.setPeriod(this.step_period);
+
+    this.clear_timer = new SecondsTimer();
+    this.clear_timer.setPeriod(this.clear_period);
+
     if (this.do_cycle == 0) {
       this.draw_step = 'draw_maze0_step';
     } else if (this.do_cycle == 1) {
@@ -80,9 +83,13 @@ class MazeSpin {
 
   draw_maze_at(at) {
     // this.output.background(220);
+    // if (this.clear_timer.arrived()) {
     this.output.clear();
+    // }
     let tangle = HALF_PI * at;
     let half = this.d / 2;
+    let drawLeft = this.do_truchet ? 'truchet_drawLeft' : 'line_drawLeft';
+    let drawRight = this.do_truchet ? 'truchet_drawRight' : 'line_drawRight';
     for (let index = 0; index < this.pts.length; index++) {
       let [x, y] = this.pts[index];
       let now = this.now[index];
@@ -90,12 +97,13 @@ class MazeSpin {
       let angle = now == target ? 0 : tangle;
       if (this.video_color) {
         let col = this.input_copy.get(x, y);
+        col[3] = this.alpha;
         this.output.stroke(col);
       }
       if (now) {
-        this.drawLeft(x, y, this.d, half, angle);
+        this[drawLeft](x, y, this.d, half, angle);
       } else {
-        this.drawRight(x, y, this.d, half, angle);
+        this[drawRight](x, y, this.d, half, angle);
       }
     }
   }
@@ -114,7 +122,7 @@ class MazeSpin {
     if (this.timer.arrived()) {
       array_add(this.now, this.delta);
       array_add(this.next, this.delta);
-      //   div_report(this, this.target, 'draw_maze0_step');
+      div_report(this, this.target, 'draw_maze0_step');
       this.timer.setPeriod(this.step_period);
       this.draw_step = 'draw_maze0_step';
     }
@@ -137,6 +145,7 @@ class MazeSpin {
       this.next = oldNow;
       this.target = this.next;
       array_random(this.target);
+      div_report(this, this.target, 'draw_maze1_step');
       this.timer.setPeriod(this.step_period);
       this.draw_step = 'draw_maze1_step';
     }
@@ -205,7 +214,7 @@ class MazeSpin {
   }
 
   // --
-  drawLeft(x, y, len, half, angle) {
+  line_drawLeft(x, y, len, half, angle) {
     this.output.push();
     this.output.translate(x + half, y + half);
     this.output.rotate(angle);
@@ -213,11 +222,30 @@ class MazeSpin {
     this.output.pop();
   }
 
-  drawRight(x, y, len, half, angle) {
+  line_drawRight(x, y, len, half, angle) {
     this.output.push();
     this.output.translate(x + half, y + half);
     this.output.rotate(angle);
     this.output.line(-half + len, -half + 0, -half + 0, -half + len);
+    this.output.pop();
+  }
+
+  // --
+  truchet_drawLeft(x, y, len, half, angle) {
+    this.output.push();
+    this.output.translate(x + half, y + half);
+    this.output.rotate(angle);
+    this.output.arc(-half + 0, -half + 0, len, len, 0, d90);
+    this.output.arc(-half + len, -half + len, len, len, d180, d270);
+    this.output.pop();
+  }
+
+  truchet_drawRight(x, y, len, half, angle) {
+    this.output.push();
+    this.output.translate(x + half, y + half);
+    this.output.rotate(angle);
+    this.output.arc(-half + len, -half + 0, len, len, d90, d180);
+    this.output.arc(-half + 0, -half + len, len, len, d270, d360);
     this.output.pop();
   }
 
@@ -252,3 +280,14 @@ class MazeSpin {
     return n;
   }
 }
+
+let _PI = Math.PI;
+let _HALF_PI = _PI / 2;
+
+let d90 = _HALF_PI;
+let d180 = _HALF_PI * 2;
+let d270 = _HALF_PI * 3;
+let d360 = _HALF_PI * 4;
+
+// https://editor.p5js.org/jht9629-nyu/sketches/fWSv5uzke
+// truchet tiles pause copy
