@@ -1,0 +1,2 @@
+echo download 1 "spiral walk-zaAsh0DZt"
+curl -s https://editor.p5js.org/editor/projects/zaAsh0DZt/zip -o "/Users/jht2/Documents/projects/2024/p5mo/p5mirror-jht9629-gmail/downloads/zips/spiral walk-zaAsh0DZt.zip"
