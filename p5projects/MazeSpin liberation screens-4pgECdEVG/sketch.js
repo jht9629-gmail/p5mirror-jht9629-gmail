@@ -17,6 +17,7 @@ function setup() {
   my.do_cycle = 2;
   my.do_report = 0;
   my.alpha = 255;
+  my.do_truchet = 1;
 
   my.width = 400;
   my.height = 400;
