@@ -16,8 +16,6 @@ open https://nodejs.org/en/download
 
 bin/mirror.sh --user p5name
 
-bin/mirror.sh --user jht9629-gmail
-
 # and then commit changes in github desktop
 
 ```
@@ -26,7 +24,8 @@ bin/mirror.sh --user jht9629-gmail
 
 ```
 # Edit this line for your editor.p5js user name
-bin/mirror.sh --user p5name
+
+bin/mirror.sh --user jht9629-gmail
 
 ```
 
